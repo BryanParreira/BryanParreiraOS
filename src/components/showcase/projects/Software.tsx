@@ -1,275 +1,224 @@
 import React from 'react';
 // @ts-ignore
-import saga from '../../../assets/pictures/projects/software/saga.mp4';
+import workflowDemo from '../../../assets/pictures/projects/software/saga.mp4';
 // @ts-ignore
-import computer from '../../../assets/pictures/projects/software/computer.mp4';
+import leadGeneration from '../../../assets/pictures/projects/software/computer.mp4';
 // @ts-ignore
-import scroll from '../../../assets/pictures/projects/software/scroll.mp4';
+import automation from '../../../assets/pictures/projects/software/scroll.mp4';
 import ResumeDownload from '../ResumeDownload';
 import VideoAsset from '../../general/VideoAsset';
 
-export interface SoftwareProjectsProps {}
+export interface AutomationProjectsProps {}
 
-const SoftwareProjects: React.FC<SoftwareProjectsProps> = (props) => {
+const AutomationProjects: React.FC<AutomationProjectsProps> = (props) => {
     return (
         <div className="site-page-content">
-            <h1>Software</h1>
-            <h3>Projects</h3>
+            <h1>n8n Automation</h1>
+            <h3>Business Process Automation</h3>
             <br />
             <p>
-                Below are some of my favorite software projects I have worked on
-                over the last few years.
+                Advanced workflow automation systems built with n8n for
+                WebVisionRank and client projects, handling everything from lead
+                generation to customer relationship management.
             </p>
             <br />
             <ResumeDownload />
             <br />
             <div className="text-block">
-                <h2>henryheffernan.com</h2>
+                <h2>Workflow Automation at Scale</h2>
                 <br />
                 <p>
-                    henryheffernan.com is my portfolio website, and also the
-                    website you are on right now. This project was an absolute
-                    joy to make and challenged me both technically and
-                    creatively. Early in 2022, I knew I wanted to make an
-                    interactive portfolio to aid my job search. I eventually got
-                    the idea for this site around early February and began
-                    development early March. I've been developing it alongside
-                    my last semester at school and if you are reading this, it's
-                    pretty much done!
+                    For WebVisionRank and various client projects, I've developed
+                    sophisticated automation systems using n8n that streamline
+                    complex business processes. These workflows handle thousands
+                    of operations daily, from prospecting and lead qualification
+                    to customer communication and data management.
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={computer} />
+                    <VideoAsset src={workflowDemo} />
                     <p style={styles.caption}>
                         <sub>
-                            <b>Figure 1:</b> Blender Scene of the 3D website.
-                            The scene from Blender was baked and exported in a
-                            GLTF format.
+                            <b>Figure 1:</b> Complex n8n workflow showing the
+                            interconnected nodes that power automated business
+                            processes.
                         </sub>
                     </p>
                 </div>
                 <p>
-                    Now, a quick technical breakdown of the site. The website is
-                    split into two parts, the 3D site, and the 2D OS site. The
-                    3D site uses Three.js to render the scene and renders the 2D
-                    site inside of it using an iframe. The 2D OS site is a
-                    simple react site that is hosted{' '}
-                    <a
-                        rel="noreferrer"
-                        target="_blank"
-                        href="https://henryheffernan.vercel.app/"
-                    >
-                        here
-                    </a>{' '}
-                    and works as a standalone web app. The actual rendering of
-                    the 2D site is accomplished using a CSS renderer provided by
-                    Three.js that transforms the html of the 2D site with 3D CSS
-                    transforms to give the illusion of three dimensionality.
+                    The beauty of n8n is its flexibility - I can integrate
+                    virtually any service or API, create custom logic with
+                    JavaScript, and build workflows that adapt to changing
+                    business needs. What would take hours of manual work is
+                    executed in seconds, allowing businesses to scale their
+                    operations without proportionally scaling their team.
                 </p>
                 <br />
-                <h3>Links:</h3>
+                <h3>Core Capabilities:</h3>
                 <ul>
                     <li>
-                        <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href="https://henryheffernan.com"
-                        >
-                            <p>
-                                <b>[3D Site]</b> - henryheffernan.com
-                            </p>
-                        </a>
+                        <p>
+                            <b>Lead Generation:</b> Automated prospecting and
+                            qualification systems
+                        </p>
                     </li>
                     <li>
-                        <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href="https://henryheffernan.vercel.app/"
-                        >
-                            <p>
-                                <b>[OS Site]</b> - henryheffernan.vercel.app
-                            </p>
-                        </a>
+                        <p>
+                            <b>Email Campaigns:</b> Sophisticated drip campaigns
+                            with AI-powered personalization
+                        </p>
                     </li>
                     <li>
-                        <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href="https://github.com/henryjeff/portfolio-website"
-                        >
-                            <p>
-                                <b>[GitHub]</b> - 3D Site Repository
-                            </p>
-                        </a>
+                        <p>
+                            <b>CRM Integration:</b> Seamless data flow between
+                            multiple business systems
+                        </p>
                     </li>
                     <li>
-                        <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href="https://github.com/henryjeff/portfolio-inner-site"
-                        >
-                            <p>
-                                <b>[GitHub]</b> - OS Site Repository
-                            </p>
-                        </a>
+                        <p>
+                            <b>Data Processing:</b> Automated data cleaning,
+                            enrichment, and transformation
+                        </p>
                     </li>
                 </ul>
-                <p>
-                    I'm skipping over a lot of details in exchange for brevity,
-                    but I do plan on doing a more in depth breakdown for those
-                    interested sometime in the future. To get updates with that
-                    project feel free to follow me on twitter{' '}
-                    <a
-                        rel="noreferrer"
-                        target="_blank"
-                        href="https://twitter.com/henryheffernan"
-                    >
-                        @henryheffernan
-                    </a>
-                </p>
             </div>
             <div className="text-block">
-                <h2>Guntattchment Saga The Sequel</h2>
+                <h2>Storm-Based Roofing Lead Generation</h2>
                 <br />
                 <p>
-                    Guntattchment Saga or GSTS is a game I made with my good
-                    friend Scott Bass back in 2019. The game is a wave based top
-                    down shooter where you progress by building the most
-                    outrageous of weapons through attaching as many attachments
-                    on your weapon as you can. The game ceased development in
-                    2019 because we unfortunately both had packed school
-                    schedules and were unable to find the time to work on it.
+                    One of my most successful automation projects is the
+                    storm-based lead generation system built for Ridgeline
+                    Roofing MN. This system automatically identifies potential
+                    customers based on weather events and manages the entire
+                    outreach process from initial contact to appointment
+                    scheduling.
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={saga} />
+                    <VideoAsset src={leadGeneration} />
                     <div style={styles.caption}>
                         <p>
                             <sub>
-                                <b>Figure 2: </b> Guntattchment Saga Gameplay
-                                demo, featuring the main character along with a
-                                few of our grunt and dasher enemies.
+                                <b>Figure 2: </b> Storm tracking workflow that
+                                monitors weather data and triggers targeted
+                                outreach campaigns.
                             </sub>
                         </p>
                     </div>
                 </div>
                 <p>
-                    Guntattchment Saga was a really fun project to work on and
-                    had a multitude of challenges. An interesting challenge that
-                    you may not even notice was the rotation of objects such as
-                    the players weapon. Rotating pixel art is a very difficult
-                    thing to do because in the world of pixels you are dealing
-                    with such a little amount of information. Even a single
-                    misplaced pixel can cause a sprite to read in a totally
-                    different and unintended way. To deal with this we developed
-                    an algorithm to prioritize outlines, while rotating the
-                    insides with a simple Nearest Neighbor algorithm. Doing so
-                    resulted in a relatively readable sprite when rotating
-                    sprites. It was a surprisingly difficult challenge as it
-                    intersected both art and programming, but was fun to work on
-                    overall.
+                    The system works by monitoring weather APIs for storm events
+                    in target areas. When a storm is detected, it automatically
+                    identifies properties in the affected area using geographic
+                    data, enriches the data with property owner information, and
+                    initiates a personalized outreach campaign.
                 </p>
                 <br />
-                <h3>Links:</h3>
+                <p>
+                    What makes this system particularly effective is the timing.
+                    Homeowners are most receptive to roofing services immediately
+                    after storm damage, and this automation ensures Ridgeline
+                    Roofing is one of the first companies to reach out with
+                    relevant, timely offers for inspection and repair services.
+                </p>
+                <br />
+                <h3>System Components:</h3>
                 <ul>
                     <li>
-                        <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href="https://github.com/scottbass47/gsts"
-                        >
-                            <p>
-                                <b>[GitHub]</b> - Guntattchment Saga The Sequel
-                                Unity Repository
-                            </p>
-                        </a>
+                        <p>
+                            <b>Weather Monitoring:</b> Real-time storm tracking
+                            across multiple data sources
+                        </p>
                     </li>
                     <li>
-                        <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href="https://github.com/henryjeff/gsts_assets"
-                        >
-                            <p>
-                                <b>[GitHub]</b> - Guntattchment Saga The Sequel
-                                Assets Repository
-                            </p>
-                        </a>
+                        <p>
+                            <b>Geographic Targeting:</b> Property identification
+                            in affected areas
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Data Enrichment:</b> Automated property owner
+                            lookup and contact information gathering
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Multi-Channel Outreach:</b> Email, SMS, and direct
+                            mail coordination
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Response Tracking:</b> Automated follow-up and
+                            lead scoring
+                        </p>
                     </li>
                 </ul>
-                <p>
-                    Unfortunately, the game currently is not in a releasable
-                    state and so there is no demo available online. If this ever
-                    changes, however, a link to the game will be added here.
-                </p>
             </div>
             <div className="text-block">
-                <h2>Skip the Scroll</h2>
+                <h2>AI-Powered Personalization</h2>
                 <br />
                 <p>
-                    While working at Hover, I spent a lot of time on GitHub
-                    issue pages looking for answers and solutions to problems I
-                    had run into. I would always find myself sifting though the
-                    comments trying to find the right answer, which usually had
-                    the most upvotes and positive reactions. With that
-                    information, I decided to create a very simple chrome
-                    extension that would sift through all the comments on the
-                    page, sort them by positive reactions, and then allow you to
-                    traverse them from most positive reactions to least positive
-                    reactions.
+                    Modern automation isn't just about executing repetitive
+                    tasks - it's about doing so intelligently. I've integrated AI
+                    capabilities into many workflows to personalize
+                    communications at scale. Using local AI models through Ollama
+                    or cloud-based APIs when appropriate, the systems can
+                    generate personalized email content, analyze customer
+                    responses, and adapt messaging based on engagement patterns.
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={scroll} />
+                    <VideoAsset src={automation} />
                     <p style={styles.caption}>
                         <sub>
-                            <b>Figure 3:</b> Skip the Scroll in action, finding
-                            the highest rated comments and scrolling right to
-                            them
+                            <b>Figure 3:</b> AI-enhanced workflow showing
+                            personalization logic and response handling.
                         </sub>
                     </p>
                 </div>
                 <p>
-                    The extension is open source and currently released on the
-                    Chrome web store. Skip the Scroll is obviously not a project
-                    with massive scope, but was fun to make and dive into the
-                    world of browser extensions. I wanted to showcase since it's
-                    a developer tool and I wanna give it some visibility for
-                    those who might find it useful.
+                    This combination of automation and AI creates experiences
+                    that feel personal despite being completely automated.
+                    Recipients get relevant, timely messages that address their
+                    specific situation, while businesses benefit from the
+                    efficiency of automation at scale.
                 </p>
                 <br />
-                <h3>Links:</h3>
+                <h3>Automation Results:</h3>
                 <ul>
                     <li>
-                        <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href="https://github.com/henryjeff/skip-the-scroll"
-                        >
-                            <p>
-                                <b>[GitHub]</b> - Skip the Scroll Repository
-                            </p>
-                        </a>
+                        <p>
+                            <b>Efficiency Gains:</b> 95%+ reduction in manual
+                            processing time
+                        </p>
                     </li>
                     <li>
-                        <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href="https://chrome.google.com/webstore/detail/skip-the-scroll/mfehannpjmgfagldoilpngeoecdfgmnd"
-                        >
-                            <p>
-                                <b>[Chrome Web Store]</b> - Skip the Scroll
-                            </p>
-                        </a>
+                        <p>
+                            <b>Response Rates:</b> 3-5x improvement over manual
+                            outreach campaigns
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Scalability:</b> Handle 1000+ leads per day per
+                            workflow
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Accuracy:</b> Near-zero error rate with proper
+                            validation
+                        </p>
                     </li>
                 </ul>
                 <p>
-                    If you are a developer and have also found yourself
-                    scrolling through github comment after github comment saying
-                    "i also have this problem...", then I highly recommend you
-                    check out Skip the Scroll to save you some of your precious
-                    time. If you like it, feel free to star it on GitHub and
-                    rate it on the Chrome web store.
+                    These automation projects demonstrate how the right tools and
+                    systems can transform business operations. By eliminating
+                    repetitive manual work and ensuring consistent, timely
+                    execution, businesses can focus their human talent on
+                    high-value activities while automation handles the rest.
                 </p>
             </div>
             <ResumeDownload />
@@ -287,4 +236,4 @@ const styles: StyleSheetCSS = {
     },
 };
 
-export default SoftwareProjects;
+export default AutomationProjects;

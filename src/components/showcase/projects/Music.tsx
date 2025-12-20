@@ -1,224 +1,231 @@
-import React, { useState } from 'react';
+import React from 'react';
 // @ts-ignore
-import house from '../../../assets/audio/house_master.mp3';
+import nexusWorkflow from '../../../assets/pictures/projects/software/saga.mp4';
 // @ts-ignore
-import edge from '../../../assets/audio/edge_unmastered.mp3';
+import desktopManagement from '../../../assets/pictures/projects/software/computer.mp4';
 // @ts-ignore
-import dnb from '../../../assets/audio/break.mp3';
-// @ts-ignore
-import dnbDrums from '../../../assets/audio/dnb_drop_drums.mp3';
-import houseProject from '../../../assets/pictures/projects/audio/houseProject.png';
-import dnbDrumsProject from '../../../assets/pictures/projects/audio/dnbDrumsProject.png';
-import { MusicPlayer } from '../../general';
+import featureOverview from '../../../assets/pictures/projects/software/scroll.mp4';
+import ResumeDownload from '../ResumeDownload';
+import VideoAsset from '../../general/VideoAsset';
 
-export interface MusicProjectsProps {}
+export interface NexusProjectsProps {}
 
-const MusicProjects: React.FC<MusicProjectsProps> = (props) => {
-    const [currentSong, setCurrentSong] = useState<string>('');
-
+const NexusProjects: React.FC<NexusProjectsProps> = (props) => {
     return (
         <div className="site-page-content">
-            <h1>Music & Sound</h1>
-            <h3>Ventures</h3>
+            <h1>Nexus OS</h1>
+            <h3>Next-Generation Project Management Ecosystem</h3>
+            <br />
+            <p>
+                Nexus is a comprehensive, web-based workspace designed to centralize 
+                fragmented creative and technical workflows. It combines project 
+                management, real-time utilities, and a custom windowing system 
+                into a single, high-performance dashboard.
+            </p>
+            <br />
+            <ResumeDownload />
             <br />
             <div className="text-block">
+                <h2>The Virtual Desktop Environment</h2>
+                <br />
                 <p>
-                    Music has been a passion of mine for my whole life. When I
-                    was 15 years old, I downloaded FL Studio and started to
-                    produce my own music. I found a wonderful community on
-                    reddit called r/edmproduction and in 2016 created the now
-                    popular discord server EDM Production with over 14k members.
+                    Unlike traditional project management tools that rely on 
+                    static tabs, Nexus utilizes a custom-built windowing engine. 
+                    This allows users to multitask across several modules 
+                    simultaneously—such as managing tasks, monitoring terminal 
+                    outputs, and taking notes—within a unified OS-style interface.
+                </p>
+                <br />
+                <div className="captioned-image">
+                    <VideoAsset src={desktopManagement} />
+                    <p style={styles.caption}>
+                        <sub>
+                            <b>Figure 1:</b> The Nexus windowing system in action, 
+                            demonstrating dynamic resizing, layering, and 
+                            workspace persistence logic.
+                        </sub>
+                    </p>
+                </div>
+                <p>
+                    Built with React and Framer Motion, the environment provides 
+                    a fluid, native-feeling experience. The core architecture 
+                    manages the z-index, focus states, and spatial positioning of 
+                    every application, ensuring that the workspace remains 
+                    organized even during complex project sprints.
+                </p>
+                <br />
+                <h3>Core Platform Features:</h3>
+                <ul>
+                    <li>
+                        <p>
+                            <b>Integrated Terminal:</b> A command-driven interface 
+                            to control system preferences and automate tasks.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Contextual Note-Taking:</b> A markdown-ready editor 
+                            linked directly to active project milestones.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Audio Workstation:</b> Built-in music and 
+                            soundscape management to maintain focus during deep work.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Dynamic Theming:</b> Fully customizable CSS-in-JS 
+                            themes, ranging from Glassmorphism to high-contrast modes.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <div className="text-block">
+                <h2>Project Orchestration & Tasks</h2>
+                <br />
+                <p>
+                    At the heart of Nexus is a robust task management engine 
+                    designed for power users. It moves beyond simple to-do lists 
+                    by integrating project dependencies, time-tracking, and 
+                    automated status updates through the Nexus "Kernel."
+                </p>
+                <br />
+                <div className="captioned-image">
+                    <VideoAsset src={nexusWorkflow} />
+                    <div style={styles.caption}>
+                        <p>
+                            <sub>
+                                <b>Figure 2: </b> Advanced project workflow 
+                                showing the interaction between the Kanban 
+                                board and the system-level command palette.
+                            </sub>
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    The system is engineered for speed. Using global keyboard 
+                    shortcuts and a command palette (Cmd+K), users can create 
+                    tasks, assign deadlines, and move projects through the 
+                    pipeline without ever touching their mouse. This "keyboard-first" 
+                    philosophy is central to the Nexus productivity model.
                 </p>
                 <br />
                 <p>
-                    I don't release the music that I make publicly as I not only
-                    find it difficult to finish songs, but also it's not a
-                    priority of mine since I produce mostly because I enjoy the
-                    process of learning and creating. However if I am going to
-                    dedicate a whole page of my portfolio to my music, you bet
-                    I'll have some examples to showoff.
+                    The data layer utilizes a synchronized state management 
+                    system that ensures all open windows—whether it's the 
+                    calendar or the task list—reflect real-time changes 
+                    instantaneously across the dashboard.
                 </p>
                 <br />
-                <p>
-                    Below are some more recent Musical Endeavors I've been
-                    working on. I hope you enjoy the music and enjoy the stories
-                    behind each of the tracks.
-                </p>
+                <h3>Management Capabilities:</h3>
+                <ul>
+                    <li>
+                        <p>
+                            <b>State Persistence:</b> Automatic local-storage 
+                            synchronization so your workspace layout is never lost.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Command Palette:</b> Instant access to every 
+                            functionality within the app via a unified search bar.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Resource Tracking:</b> Built-in utilities to 
+                            monitor project time, file attachments, and external links.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Modular App Loading:</b> Lazy-loading architecture 
+                            that only boots the tools you need, keeping memory usage low.
+                        </p>
+                    </li>
+                </ul>
             </div>
-            <h2>Exploring house</h2>
-            <br />
-            <p>
-                In 2020 I went through a phase of really enjoying house. Some of
-                my favorite artists at the time were Malaa, Chirs Lake, Kyle
-                Walker and many more. Inspired, I decided to take a stab at
-                making some house tracks.
-            </p>
-            <br />
-            <p>
-                I failed a few times as I wasn't really able to nail the style
-                and groove I was going for but ultimately ended up creating the
-                piece below.
-            </p>
-            <br />
 
-            <MusicPlayer
-                src={house}
-                title="Timeless"
-                subtitle="Henry Heffernan - 2022"
-                currentSong={currentSong}
-                setCurrentSong={setCurrentSong}
-            />
-
-            <br />
-            <br />
-            <div className="captioned-image">
-                <img src={houseProject} alt="" />
+            <div className="text-block">
+                <h2>The Nexus Intelligence Layer</h2>
+                <br />
                 <p>
-                    <sub>
-                        <b>Figure 1:</b> A screenshot of the project file of
-                        Timeless. 64 tracks in total.
-                    </sub>
+                    Modern project management requires more than just organization—it 
+                    requires intelligence. Nexus integrates with local AI models 
+                    (via Ollama) to provide users with a private, on-device assistant 
+                    capable of summarizing notes and suggesting task prioritizations.
+                </p>
+                <br />
+                <div className="captioned-image">
+                    <VideoAsset src={featureOverview} />
+                    <p style={styles.caption}>
+                        <sub>
+                            <b>Figure 3:</b> AI-assisted project summary and 
+                            automated daily briefing generated within the 
+                            Nexus environment.
+                        </sub>
+                    </p>
+                </div>
+                <p>
+                    By keeping the data local, Nexus offers a privacy-focused 
+                    alternative to cloud-heavy management tools. The assistant 
+                    can scan your current workspace "context" and provide 
+                    relevant insights based on the windows you have open and 
+                    the tasks you are currently tackling.
+                </p>
+                <br />
+                <h3>Performance & Results:</h3>
+                <ul>
+                    <li>
+                        <p>
+                            <b>Workflow Velocity:</b> Significant reduction in 
+                            context-switching time through a unified UI.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Technical Stack:</b> Built with React 18, 
+                            TypeScript, and Zustand for high-scale state management.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Privacy:</b> On-device processing ensures all 
+                            sensitive project data stays within the browser.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>User Engagement:</b> An immersive, gamified 
+                            experience that makes project management feel like 
+                            an interactive OS.
+                        </p>
+                    </li>
+                </ul>
+                <p>
+                    Nexus represents the future of personal and professional 
+                    productivity. By consolidating every tool a developer or 
+                    creative professional needs into a single, high-performance 
+                    desktop environment, it eliminates the noise of the modern 
+                    web and allows for true deep work.
                 </p>
             </div>
-            <p>
-                I love so much about this track. I'm particularly very proud of
-                the composition and the trichotomy of the happy upbeat energy in
-                the intro and first drop, into the rich and euphoric bridge,
-                before delving into the darkness of the final build and drop. I
-                had an absolute blast making this back in the fall of 2020, and
-                every time I revisit it to tweak it just a little more, I have
-                so much fun.
-            </p>
-            <br />
-            <p>
-                After making this track around fall 2020, my interest for house
-                overall was tapering off. Around this time I was starting to go
-                to the gym more consistently and ended up listening to a lot
-                more hard bass music, specifically drum & bass, mid tempo and of
-                course dubstep.
-            </p>
-            <br />
-            <h2>Mid-Tempo?</h2>
-            <br />
-            <p>
-                Only about a month after taking a step away from house I started
-                working on a mid-tempo track which I called edge. I did a lot of
-                experimenting with this track, and to this day I'm very proud
-                with how it turned out. I never got around to finishing it up
-                and giving it a proper outro, but I'm still very happy with it's
-                current state.
-            </p>
-            <br />
-            <MusicPlayer
-                src={edge}
-                title="Edge [W.I.P.]"
-                subtitle="Henry Heffernan - 2021"
-                currentSong={currentSong}
-                setCurrentSong={setCurrentSong}
-            />
-            <br />
-            <p>
-                This track is so dark and I love it! The bass and percussion are
-                the obvious stars of the piece, and I had a blast designing each
-                of them. The bass in this song is layered with a lot of textures
-                and they really give it a lot of the character it needs to be
-                the driving force of the track. The percussion on the other hand
-                gives the track a lot of depth in the high end so when
-                juxtaposed with the bass it radiates this dark and mysterious
-                vibe.
-            </p>
-            <br />
-            <h2>My love for Drum & Bass</h2>
-            <br />
-            <p>
-                I've always loved drum & bass, and over the years I feel like I
-                always come back to it. My first song I ever made was a DnB
-                track and as I've continued to make music over these last few
-                years the way I produce DnB really reflects my specific taste at
-                that time. It's very fun looking back at the various DnB styles
-                I've taken stabs at over time and how my taste has evolved.
-            </p>
-            <br />
-            <p>
-                The track below is a snip-it from a DnB track I started work on
-                back in 2019. I recently decided to pick it up again and work on
-                it more because I loved the idea, bassline and especially the
-                drums. Below is a short demo of the track including a small
-                buildup and drop.
-            </p>
-            <br />
-            <MusicPlayer
-                src={dnb}
-                title="Break [Demo]"
-                subtitle="Henry Heffernan - 2019/2022"
-                currentSong={currentSong}
-                setCurrentSong={setCurrentSong}
-            />
-            <br />
-            <p>
-                Like I said, I decided to come back to this track because I
-                absolutely loved so much about it. When I picked up work on it
-                again I decided to totally remix the drums and I'm super proud
-                with how they turned out. So proud in fact, I wanted to show
-                them off some more on their own! Below are the drums in the
-                above track, but isolated. I have also included the sub bass
-                because it is drum and bass after all!
-            </p>
-            <br />
-            <MusicPlayer
-                src={dnbDrums}
-                title="Break [Drums and Sub]"
-                subtitle="Henry Heffernan - 2019/2022"
-                currentSong={currentSong}
-                setCurrentSong={setCurrentSong}
-            />
-            <br />
-            <div className="captioned-image">
-                <img src={dnbDrumsProject} alt="" />
-                <p>
-                    <sub>
-                        <b>Figure 2:</b> Drums and sub for the track Break. See
-                        if you can follow along in the image as the audio above
-                        plays!
-                    </sub>
-                </p>
-            </div>
-            <br />
-            <p>
-                There are a lot of layers to DnB drums, and I honestly find them
-                the hardest to mix and get right since the sound design of DnB
-                so often wants to fight in the same frequency range as the
-                drums. Because of this I use very aggressive sidechain to keep
-                the drums clear while giving me the freedom to not have to
-                overly eq the bass and general sound design. I also find that
-                parallel compression on drums in DnB can be an absolute life
-                saver to keep the drums controlled but still hard hitting.
-            </p>
-            <br />
-            <h2>The Future of my music</h2>
-            <br />
-            <p>
-                I love to make music and will continue to make music as long as
-                I can. I think soon enough I will be releasing music publicly
-                since I feel like my personal style has slowly developed into
-                something I am proud of over these last few years. I also want
-                to one day make an album, but that is a long ways away.
-            </p>
-            <br />
-            <p>
-                I am aware this section of my portfolio is rather short, but
-                it's because I am very selective with what I want to show off to
-                the world. I've been producing for over 6 years and have made
-                hundreds maybe even a thousand tracks/loops in that time. I only
-                recently have been feeling very content with the stuff I've made
-                and I'm very excited to see what I can do for the future. Thanks
-                for listening I hope you enjoyed!
-            </p>
-            <br />
+            <ResumeDownload />
         </div>
     );
 };
 
-// const styles: StyleSheetCSS = {};
+const styles: StyleSheetCSS = {
+    video: {
+        width: '100%',
+        padding: 12,
+    },
+    caption: {
+        width: '80%',
+    },
+};
 
-export default MusicProjects;
+export default NexusProjects;

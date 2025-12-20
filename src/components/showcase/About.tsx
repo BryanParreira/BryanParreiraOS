@@ -56,32 +56,19 @@ const About: React.FC<AboutProps> = (props) => {
                 </div>
 
                 <p>
-                    I started programming more seriously in high school,
+                    I started programming more seriously 2 years ago,
                     initially learning how to scrape and interact with websites.
-                    I went on to do a ton of passion projects, many of them with
-                    one of my closest friends,{' '}
-                    <a
-                        rel="noreferrer"
-                        target="_blank"
-                        href="https://www.linkedin.com/in/scott-bass-189a7919b/"
-                    >
-                        Scott Bass
-                    </a>
-                    . We worked on many projects together, including chat bots,
+                    I went on to do a ton of passion projects, including chat bots,
                     multiple game projects, apps, and more. One of these
                     projects is viewable on my{' '}
                     <Link to="/projects/software">Software Projects</Link> page.
                 </p>
                 <br />
                 <p>
-                    In 2017, I got accepted into Rennselear Polytechnic
-                    Institute to study Computer Science. It was my first choice
+                    In 2022, I got accepted into Riverland Community College to study Computer Tech. It was my first choice
                     and I was absolutely ecstatic to be going to such a great
-                    university. At the end of my sophomore year, I got an
-                    internship working for the startup Hover, primarily focusing
-                    on frontend work. I continued to work at Hover on and off
-                    for about a year and a half, until the start of my senior
-                    year when I decided to focus on other opportunities.
+                    university. At the end of my sophomore year, I got to work in some projects, primarily focusing
+                    on frontend work. I continued to work on my project during these years.
                 </p>
                 <br />
                 <br />
@@ -99,21 +86,14 @@ const About: React.FC<AboutProps> = (props) => {
                         <p>
                             Beyond software, I have a lot of hobbies that I
                             enjoy doing in my free time. The more tangible
-                            hobbies I have are{' '}
-                            <Link to="/projects/music">Music Production</Link>{' '}
-                            and creating{' '}
-                            <Link to="/projects/art">Digital Art</Link>. You can
-                            read more about each of these on their respective
-                            pages under my projects tab. Some other hobbies I
-                            enjoy are working out, cooking, and (unsurprisingly)
-                            playing video games.
+                            hobbies I have are play with my dogs and spend time with family. I also enjoy playing video games, driving, and reading.
                         </p>
                         <br />
                         <p>
-                            In college, I was an active member in the fraternity
-                            Sigma Alpha Epsilon and held multiple positions in
-                            the chapter. I met a lot of amazing people through
-                            my fraternity and thoroughly enjoyed the community.
+                            In college, I was an active member in the Student Senate
+                            and held the position of vice-president in
+                            the group. I met a lot of amazing people through
+                            my years and thoroughly enjoyed the community.
                         </p>
                     </div>
                     <div style={styles.verticalImage}>
@@ -131,13 +111,13 @@ const About: React.FC<AboutProps> = (props) => {
                     Thanks for reading about me! I hope that you enjoy exploring
                     the rest of my portfolio website and everything it has to
                     offer. If you find the easter egg make sure to let me know
-                    on twitter{' '}
+                    on instagram{' '}
                     <a
                         rel="noreferrer"
                         target="_blank"
-                        href="https://twitter.com/henryheffernan"
+                        href="https://instagram.com/bryan_parreira"
                     >
-                        @henryheffernan
+                        @bryan_parreira
                     </a>{' '}
                     Good luck and have fun!
                 </p>
