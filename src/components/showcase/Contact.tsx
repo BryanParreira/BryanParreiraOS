@@ -116,7 +116,7 @@ const Contact: React.FC<ContactProps> = (props) => {
                 <div style={styles.socials}>
                     <SocialBox
                         icon={ghIcon}
-                        link={'https://github.com/henryjeff'}
+                        link={'https://github.com/bryanparreira'}
                     />
                     <SocialBox
                         icon={inIcon}
@@ -138,8 +138,8 @@ const Contact: React.FC<ContactProps> = (props) => {
                 <br />
                 <p>
                     <b>Email: </b>
-                    <a href="mailto:henryheffernan@gmail.com">
-                        henryheffernan@gmail.com
+                    <a href="mailto:bryan@webvisionrank.com">
+                        bryan@webvisionrank.com
                     </a>
                 </p>
 
