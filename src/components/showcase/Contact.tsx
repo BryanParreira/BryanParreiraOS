@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import colors from '../../constants/colors';
 import twitterIcon from '../../assets/pictures/contact-twitter.png';
 import ghIcon from '../../assets/pictures/contact-gh.png';
@@ -56,21 +56,23 @@ const Contact: React.FC<ContactProps> = (props) => {
         }
         try {
             setIsLoading(true);
-            const res = await fetch(
-                'https://mintcream-lyrebird-681238.hostingersite.com/api/contact.php',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        company,
-                        email,
-                        name,
-                        message,
-                    }),
-                }
-            );
+            
+            // Dynamically construct the API URL based on current domain
+            const apiUrl = `${window.location.origin}/api/contact.php`;
+            
+            const res = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    company,
+                    email,
+                    name,
+                    message,
+                }),
+            });
+            
             // the response will be either {success: true} or {success: false, error: message}
             const data = (await res.json()) as
                 | {
@@ -92,6 +94,7 @@ const Contact: React.FC<ContactProps> = (props) => {
                 setIsLoading(false);
             }
         } catch (e) {
+            console.error('Contact form error:', e);
             setFormMessage(
                 'There was an error sending your message. Please try again.'
             );
@@ -246,11 +249,11 @@ const Contact: React.FC<ContactProps> = (props) => {
                 </div>
             </div>
             <div className="resume-container">
-    <p><b>Need a copy of my Resume?</b></p>
-    <a href={ResumePDF} download="Bryan_Parreira_Resume.pdf" style={{color: colors.blue}}>
-        Click here to download it!
-    </a>
-</div>
+                <p><b>Need a copy of my Resume?</b></p>
+                <a href={ResumePDF} download="Bryan_Parreira_Resume.pdf" style={{color: colors.blue}}>
+                    Click here to download it!
+                </a>
+            </div>
         </div>
     );
 };
@@ -274,7 +277,6 @@ const styles: StyleSheetCSS = {
     },
     formInfo: {
         textAlign: 'right',
-
         flexDirection: 'column',
         alignItems: 'flex-end',
         paddingLeft: 24,
@@ -298,8 +300,6 @@ const styles: StyleSheetCSS = {
     social: {
         width: 4,
         height: 4,
-        // borderRadius: 1000,
-
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: 8,
