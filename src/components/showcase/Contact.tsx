@@ -140,10 +140,7 @@ const Contact: React.FC<ContactProps> = (props) => {
                 </p>
                 <br />
                 <p>
-                    <b>Email: </b>
-                    <a href="mailto:bryan@webvisionrank.com">
-                        bryan@webvisionrank.com
-                    </a>
+                    <b>Send me a message</b>
                 </p>
 
                 <div style={styles.form}>
