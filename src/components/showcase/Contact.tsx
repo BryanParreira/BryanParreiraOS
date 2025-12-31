@@ -139,12 +139,6 @@ const Contact: React.FC<ContactProps> = (props) => {
                     the form below!
                 </p>
                 <br />
-                <p>
-                    <b>Email: </b>
-                    <a href="mailto:bryan@webvisionrank.com">
-                        bryan@webvisionrank.com
-                    </a>
-                </p>
 
                 <div style={styles.form}>
                     <label>
