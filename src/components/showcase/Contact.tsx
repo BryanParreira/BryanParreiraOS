@@ -57,7 +57,7 @@ const Contact: React.FC<ContactProps> = (props) => {
         try {
             setIsLoading(true);
             const res = await fetch(
-                'https://api.bryanparreira.com/api/contact',
+                'https://bryanparreira.com/api/contact.php',
                 {
                     method: 'POST',
                     headers: {
