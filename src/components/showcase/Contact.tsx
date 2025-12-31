@@ -3,7 +3,7 @@ import colors from '../../constants/colors';
 import twitterIcon from '../../assets/pictures/contact-twitter.png';
 import ghIcon from '../../assets/pictures/contact-gh.png';
 import inIcon from '../../assets/pictures/contact-in.png';
-import Resume from './assets/resume/Resume.pdf';
+import ResumePDF from '../../assets/resume/Resume.pdf';
 
 export interface ContactProps {}
 
@@ -245,7 +245,9 @@ const Contact: React.FC<ContactProps> = (props) => {
                     </div>
                 </div>
             </div>
-            <Resume altText="Need a copy of my Resume?" />
+            <a href="/Resume.pdf" download="Bryan_Parreira_Resume.pdf">
+   Click here to download it!
+</a>
         </div>
     );
 };
