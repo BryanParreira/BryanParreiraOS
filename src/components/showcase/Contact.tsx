@@ -3,7 +3,7 @@ import colors from '../../constants/colors';
 import twitterIcon from '../../assets/pictures/contact-twitter.png';
 import ghIcon from '../../assets/pictures/contact-gh.png';
 import inIcon from '../../assets/pictures/contact-in.png';
-import ResumePDF from '../../assets/resume/Resume.pdf';
+import ResumeDownload from './ResumeDownload';
 
 export interface ContactProps {}
 
@@ -139,6 +139,12 @@ const Contact: React.FC<ContactProps> = (props) => {
                     the form below!
                 </p>
                 <br />
+                <p>
+                    <b>Email: </b>
+                    <a href="mailto:bryan@webvisionrank.com">
+                        bryan@webvisionrank.com
+                    </a>
+                </p>
 
                 <div style={styles.form}>
                     <label>
@@ -242,12 +248,7 @@ const Contact: React.FC<ContactProps> = (props) => {
                     </div>
                 </div>
             </div>
-            <div className="resume-container">
-                <p><b>Need a copy of my Resume?</b></p>
-                <a href={ResumePDF} download="Bryan_Parreira_Resume.pdf" style={{color: colors.blue}}>
-                    Click here to download it!
-                </a>
-            </div>
+            <ResumeDownload altText="Need a copy of my Resume?" />
         </div>
     );
 };
