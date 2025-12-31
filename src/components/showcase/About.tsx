@@ -26,9 +26,9 @@ const About: React.FC<AboutProps> = (props) => {
                     really hope you enjoy exploring it as much as I enjoyed
                     building it. If you have any questions or comments, feel
                     free to contact me using{' '}
-                    <Link to="/contact">this form</Link> or shoot me an email at{' '}
+                    <Link to="/contact">this form</Link> or shoot me an email {' '}
                     <a href="mailto:bryan@webvisionrank.com">
-                        bryan@webvisionrank.com
+                        here
                     </a>
                 </p>
             </div>
@@ -59,14 +59,7 @@ const About: React.FC<AboutProps> = (props) => {
                     I started programming more seriously in high school,
                     initially learning how to scrape and interact with websites.
                     I went on to do a ton of passion projects, many of them with
-                    one of my closest friends,{' '}
-                    <a
-                        rel="noreferrer"
-                        target="_blank"
-                        href="https://www.linkedin.com/in/scott-bass-189a7919b/"
-                    >
-                        Scott Bass
-                    </a>
+                    one of my closest friends
                     . We worked on many projects together, including chat bots,
                     multiple game projects, apps, and more. One of these
                     projects is viewable on my{' '}
@@ -131,24 +124,16 @@ const About: React.FC<AboutProps> = (props) => {
                     Thanks for reading about me! I hope that you enjoy exploring
                     the rest of my portfolio website and everything it has to
                     offer. If you find the easter egg make sure to let me know
-                    on twitter{' '}
-                    <a
-                        rel="noreferrer"
-                        target="_blank"
-                        href="https://twitter.com/henryheffernan"
-                    >
-                        @henryheffernan
-                    </a>{' '}
+                    on twitter
                     Good luck and have fun!
                 </p>
                 <br />
                 <p>
                     If you have any questions or comments I would love to hear
                     them. You can reach me through the{' '}
-                    <Link to="/contact">contact page</Link> or shoot me an email
-                    at{' '}
+                    <Link to="/contact">contact page</Link> or shoot me an email {' '}
                     <a href="mailto:bryan@webvisionrank.com">
-                        bryan@webvisionrank.com
+                       here
                     </a>
                 </p>
             </div>
