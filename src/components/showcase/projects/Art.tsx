@@ -1,8 +1,9 @@
 import React from 'react';
 // @ts-ignore
-import brainlessDemo from '../../../assets/pictures/projects/software/saga.mp4';
+import brainlesschat from '../../../assets/pictures/projects/software/brainlesschat.png';
 // @ts-ignore
-import brainlessUI from '../../../assets/pictures/projects/software/computer.mp4';
+import brainlessdash from '../../../assets/pictures/projects/software/brainlessdash.png';
+import brainlessset from '../../../assets/pictures/projects/software/brainlessset.png'
 // @ts-ignore
 import brainlessFeatures from '../../../assets/pictures/projects/software/scroll.mp4';
 import ResumeDownload from '../ResumeDownload';
@@ -37,7 +38,7 @@ const ArtProjects: React.FC<ArtProjectsProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={brainlessDemo} />
+                    <img src={brainlesschat} alt="Brainless Chat Interface" style={styles.image} />
                     <p style={styles.caption}>
                         <sub>
                             <b>Figure 1:</b> Brainless interface showcasing the
@@ -101,7 +102,7 @@ const ArtProjects: React.FC<ArtProjectsProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={brainlessUI} />
+                    <img src={brainlessdash} alt="Brainless Dashboard Interface" style={styles.image} />
                     <div style={styles.caption}>
                         <p>
                             <sub>
@@ -140,13 +141,13 @@ const ArtProjects: React.FC<ArtProjectsProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={brainlessFeatures} />
-                    <p style={styles.caption}>
+                    <img src={brainlessset} alt="Brainless Settings Interface" style={styles.image} />
+                    <div style={styles.caption}>
                         <sub>
                             <b>Figure 3:</b> Feature showcase demonstrating the
                             various capabilities of Brainless.
                         </sub>
-                    </p>
+                    </div>
                 </div>
                 <p>
                     This approach means your workspace is truly yours. All notes,
@@ -200,6 +201,10 @@ const ArtProjects: React.FC<ArtProjectsProps> = (props) => {
 
 const styles: StyleSheetCSS = {
     video: {
+        width: '100%',
+        padding: 12,
+    },
+    image: {
         width: '100%',
         padding: 12,
     },

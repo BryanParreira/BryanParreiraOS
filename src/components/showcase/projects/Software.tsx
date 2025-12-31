@@ -1,12 +1,9 @@
 import React from 'react';
 // @ts-ignore
-import workflowDemo from '../../../assets/pictures/projects/software/saga.mp4';
-// @ts-ignore
-import leadGeneration from '../../../assets/pictures/projects/software/computer.mp4';
-// @ts-ignore
-import automation from '../../../assets/pictures/projects/software/scroll.mp4';
 import ResumeDownload from '../ResumeDownload';
-import VideoAsset from '../../general/VideoAsset';
+import auto1 from '../../../assets/pictures/projects/software/auto1.png';
+import auto2 from '../../../assets/pictures/projects/software/auto2.png';
+import auto3 from '../../../assets/pictures/projects/software/auto3.png';
 
 export interface AutomationProjectsProps {}
 
@@ -36,14 +33,14 @@ const AutomationProjects: React.FC<AutomationProjectsProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={workflowDemo} />
-                    <p style={styles.caption}>
+                    <img src={auto1} alt="Automation" style={styles.image} />
+                    <div style={styles.caption}>
                         <sub>
                             <b>Figure 1:</b> Complex n8n workflow showing the
                             interconnected nodes that power automated business
                             processes.
                         </sub>
-                    </p>
+                    </div>
                 </div>
                 <p>
                     The beauty of n8n is its flexibility - I can integrate
@@ -95,7 +92,7 @@ const AutomationProjects: React.FC<AutomationProjectsProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={leadGeneration} />
+                    <img src={auto2} alt="Automation" style={styles.image} />
                     <div style={styles.caption}>
                         <p>
                             <sub>
@@ -170,13 +167,13 @@ const AutomationProjects: React.FC<AutomationProjectsProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={automation} />
-                    <p style={styles.caption}>
+                    <img src={auto3} alt="Automation" style={styles.image} />
+                    <div style={styles.caption}>
                         <sub>
                             <b>Figure 3:</b> AI-enhanced workflow showing
                             personalization logic and response handling.
                         </sub>
-                    </p>
+                    </div>
                 </div>
                 <p>
                     This combination of automation and AI creates experiences

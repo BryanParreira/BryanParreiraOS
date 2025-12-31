@@ -1,12 +1,8 @@
 import React from 'react';
-// @ts-ignore
-import nexusWorkflow from '../../../assets/pictures/projects/software/saga.mp4';
-// @ts-ignore
-import desktopManagement from '../../../assets/pictures/projects/software/computer.mp4';
-// @ts-ignore
-import featureOverview from '../../../assets/pictures/projects/software/scroll.mp4';
 import ResumeDownload from '../ResumeDownload';
-import VideoAsset from '../../general/VideoAsset';
+import nexusproj from '../../../assets/pictures/projects/software/nexusproj.png';
+import nexusdash from '../../../assets/pictures/projects/software/nexusdash.png';
+import nexusteam from '../../../assets/pictures/projects/software/nexusteam.png';
 
 export interface NexusProjectsProps {}
 
@@ -37,14 +33,14 @@ const NexusProjects: React.FC<NexusProjectsProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={desktopManagement} />
-                    <p style={styles.caption}>
+                    <img src={nexusdash} alt="Nexus Dashboard Interface" style={styles.image} />
+                    <div style={styles.caption}>
                         <sub>
                             <b>Figure 1:</b> The Nexus windowing system in action, 
                             demonstrating dynamic resizing, layering, and 
                             workspace persistence logic.
                         </sub>
-                    </p>
+                    </div>
                 </div>
                 <p>
                     Built with React and Framer Motion, the environment provides 
@@ -94,7 +90,7 @@ const NexusProjects: React.FC<NexusProjectsProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={nexusWorkflow} />
+                    <img src={nexusteam} alt="Nexus Team Management Interface" style={styles.image} />
                     <div style={styles.caption}>
                         <p>
                             <sub>
@@ -160,14 +156,14 @@ const NexusProjects: React.FC<NexusProjectsProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <VideoAsset src={featureOverview} />
-                    <p style={styles.caption}>
+                    <img src={nexusproj} alt="Nexus Project Interface" style={styles.image} />
+                    <div style={styles.caption}>
                         <sub>
                             <b>Figure 3:</b> AI-assisted project summary and 
                             automated daily briefing generated within the 
                             Nexus environment.
                         </sub>
-                    </p>
+                    </div>
                 </div>
                 <p>
                     By keeping the data local, Nexus offers a privacy-focused 
@@ -219,7 +215,7 @@ const NexusProjects: React.FC<NexusProjectsProps> = (props) => {
 };
 
 const styles: StyleSheetCSS = {
-    video: {
+    image: {
         width: '100%',
         padding: 12,
     },
