@@ -13,9 +13,7 @@ const CREDITS = [
     {
         title: 'Modeling & Texturing',
         rows: [
-            ['Bryan Bernardo Parreira', 'Texturing, Composition, & UV'],
-            ['Mickael Boitte', 'Computer Model'],
-            ['Sean Nicolas', 'Environment Models'],
+            ['Bryan Bernardo Parreira', 'Texturing, Composition, & UV']
         ],
     },
     {
@@ -29,16 +27,14 @@ const CREDITS = [
     {
         title: 'Special Thanks',
         rows: [
-            ['Bruno Simon', 'SimonDev'],
-            ['Lorelei Kravinsky', 'Scott Bass'],
-            ['Trey Briccetti', 'Mom, Dad & Angela'],
+            ['My Wife', 'My Mom & Dad'],
+            ['Aiden', 'Koda']
         ],
     },
     {
         title: 'Inspiration',
         rows: [
-            ['Bruno Simon', 'Jesse Zhou'],
-            ['Pink Yellow', 'Vivek Patel'],
+            ['Mom', 'Dad']
         ],
     },
 ];
