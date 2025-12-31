@@ -1,6 +1,12 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  
+  # Exclude API directory from React Router rewrite
+  RewriteCond %{REQUEST_URI} ^/api/ [NC]
+  RewriteRule ^ - [L]
+  
+  # Original React Router rules
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
