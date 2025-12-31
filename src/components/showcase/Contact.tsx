@@ -57,7 +57,7 @@ const Contact: React.FC<ContactProps> = (props) => {
         try {
             setIsLoading(true);
             const res = await fetch(
-                'https://bryanparreira.com/api/contact.php',
+                'https://mintcream-lyrebird-681238.hostingersite.com/api/contact.php',
                 {
                     method: 'POST',
                     headers: {
