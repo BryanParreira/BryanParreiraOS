@@ -88,7 +88,7 @@ const Projects: React.FC<ProjectsProps> = (props) => {
                 <ProjectBox
                     icon={music}
                     iconStyle={styles.musicIcon}
-                    title="Nexus OS"
+                    title="Nexus"
                     subtitle="VENTURES"
                     route="music"
                 />
