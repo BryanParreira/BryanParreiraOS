@@ -9,7 +9,7 @@ export interface NexusProjectsProps {}
 const NexusProjects: React.FC<NexusProjectsProps> = (props) => {
     return (
         <div className="site-page-content">
-            <h1>Nexus OS</h1>
+            <h1>Nexus</h1>
             <h3>Next-Generation Project Management Ecosystem</h3>
             <br />
             <p>
