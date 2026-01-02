@@ -10,7 +10,7 @@ export interface AutomationProjectsProps {}
 const AutomationProjects: React.FC<AutomationProjectsProps> = (props) => {
     return (
         <div className="site-page-content">
-            <h1>n8n Automation</h1>
+            <h1>Automation</h1>
             <h3>Business Process Automation</h3>
             <br />
             <p>
