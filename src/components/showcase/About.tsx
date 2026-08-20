@@ -56,25 +56,24 @@ const About: React.FC<AboutProps> = (props) => {
                 </div>
 
                 <p>
-                    I started programming more seriously in high school,
-                    initially learning how to scrape and interact with websites.
-                    I went on to do a ton of passion projects, many of them with
-                    one of my closest friends
-                    . We worked on many projects together, including chat bots,
-                    multiple game projects, apps, and more. One of these
-                    projects is viewable on my{' '}
-                    <Link to="/projects">Projects</Link> page.
+                    For a while, my path pointed somewhere else entirely. I set
+                    my sights on becoming a Registered Nurse and joining the
+                    military as a combat medic, and I worked toward it by
+                    earning my CNA and working hands-on patient care at a
+                    nursing home. My wife and family weren't on board with the
+                    military route though, and looking back, that pushback sent
+                    me back to what I'd always genuinely loved: technology.
                 </p>
                 <br />
                 <p>
-                    In 2017, I got accepted into Rennselear Polytechnic
-                    Institute to study Computer Science. It was my first choice
-                    and I was absolutely ecstatic to be going to such a great
-                    university. At the end of my sophomore year, I got an
-                    internship working for the startup Hover, primarily focusing
-                    on frontend work. I continued to work at Hover on and off
-                    for about a year and a half, until the start of my senior
-                    year when I decided to focus on other opportunities.
+                    I went back to Riverland Community College to study
+                    Computer Technology, and from there the direction became
+                    clear. I'm now headed into a Cybersecurity Certificate
+                    program at Minnesota State University, Mankato, building on
+                    the hands-on troubleshooting, networking, and systems work
+                    I picked up along the way. You can see some of what I'm
+                    building and working on now on my{' '}
+                    <Link to="/experience">Experience</Link> page.
                 </p>
                 <br />
                 <br />
@@ -90,16 +89,13 @@ const About: React.FC<AboutProps> = (props) => {
                         <h3>My Hobbies</h3>
                         <br />
                         <p>
-                            Beyond software, I have a lot of hobbies that I
-                            enjoy doing in my free time. The more tangible
-                            hobbies I have are{' '}
-                            <Link to="/projects/music">Nexus</Link>{' '}
-                            and creating{' '}
-                            <Link to="/projects/art">Brainless</Link>. You can
-                            read more about each of these on their respective
-                            pages under my projects tab. Some other hobbies I
-                            enjoy are working out, cooking, and (unsurprisingly)
-                            playing video games.
+                            Beyond work, I spend a lot of my free time running
+                            my homelab, tinkering with Linux and Raspberry Pi,
+                            and building out{' '}
+                            <Link to="/projects/Automations">automations</Link>{' '}
+                            for my own tools. Some other hobbies I enjoy are
+                            working out, cooking, and (unsurprisingly) playing
+                            video games.
                         </p>
                         <br />
                         <p>

@@ -8,197 +8,126 @@ const Experience: React.FC<ExperienceProps> = (props) => {
         <div className="site-page-content">
             <ResumeDownload />
             
-            {/* WebVisionRank */}
+            {/* Grovic Data */}
             <div style={styles.headerContainer}>
                 <div style={styles.header}>
                     <div style={styles.headerRow}>
-                        <h1>WebVisionRank</h1>
+                        <h1>Grovic Data</h1>
                         <a
                             rel="noreferrer"
                             target="_blank"
-                            href={'https://webvisionrank.com/'}
+                            href={'https://grovicdata.com/'}
                         >
-                            <h4>www.webvisionrank.com</h4>
+                            <h4>grovicdata.com</h4>
                         </a>
                     </div>
                     <div style={styles.headerRow}>
-                        <h3>Founder & Full-Stack Developer</h3>
+                        <h3>Co-Founder</h3>
                         <b>
-                            <p>2023 - Present</p>
+                            <p>January 2026 - Present</p>
                         </b>
                     </div>
                 </div>
             </div>
             <div className="text-block">
                 <p>
-                    Digital marketing and AI business solutions company specializing in 
-                    intelligent automation, modern web applications, and AI-powered tools. 
-                    Built with React, TypeScript, Node.js, and integrating cutting-edge AI technologies.
+                    Technology company turning raw data into strategic intelligence through
+                    data engineering, AI automation, and full-stack development, building
+                    products that centralize operations and eliminate manual work for
+                    businesses in food service, healthcare, and real estate.
                 </p>
                 <br />
                 <ul>
                     <li>
                         <p>
-                            Developed and deployed full-stack web applications with modern 
-                            React architectures, TypeScript, and Node.js backends, serving 
-                            clients across multiple industries.
+                            Co-founded and help build the company's product line, working
+                            across data engineering, AI/automation, and full-stack development
+                            from database to user interface.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Engineered AI-powered workflow automation systems using n8n, 
-                            creating intelligent agents for lead generation, weather monitoring, 
-                            and B2B outreach that process real-time data and generate personalized communications.
+                            Contributing to{' '}
+                            <a
+                                rel="noreferrer"
+                                target="_blank"
+                                href={'https://valerium.grovicdata.com/'}
+                            >
+                                Valerium
+                            </a>
+                            , a business management platform built on Open Finance that unifies
+                            banking, invoicing, CRM, and AI-driven financial insights for small
+                            and medium businesses in Brazil.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Designed and implemented computer vision systems using MediaPipe 
-                            for real-time holistic tracking (face, pose, and hand landmarks), 
-                            enabling advanced interactive applications.
+                            Contributing to{' '}
+                            <a
+                                rel="noreferrer"
+                                target="_blank"
+                                href={'https://prontusmart.grovicdata.com'}
+                            >
+                                ProntuSMART
+                            </a>
+                            , a digital health records system for clinics and hospitals covering
+                            appointment scheduling, patient flow, insurance billing, and clinical
+                            supervision.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Architected and maintained CI/CD pipelines with automated deployment 
-                            to VPS infrastructure, implementing comprehensive monitoring and 
-                            performance optimization strategies.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Built responsive marketing websites and web applications using 
-                            React Router, integrating modern UI/UX design principles and 
-                            ensuring cross-platform compatibility.
+                            Helping design automation pipelines and real-time analytics/KPI
+                            dashboards that integrate with existing ERP, CRM, and BI systems.
                         </p>
                     </li>
                 </ul>
             </div>
 
-            {/* Brainless */}
+            {/* Homelab & Networking */}
             <div style={styles.headerContainer}>
                 <div style={styles.header}>
                     <div style={styles.headerRow}>
-                        <h1>Brainless</h1>
-                        <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href={'https://github.com/BryanParreira/Brainless'}
-                        >
-                            <h4>github.com/BryanParreira/Brainless</h4>
-                        </a>
+                        <h1>Homelab & Networking</h1>
+                        <h4>Linux, Raspberry Pi & Self-Hosting</h4>
                     </div>
                     <div style={styles.headerRow}>
-                        <h3>Lead Developer & Architect</h3>
+                        <h3>Personal Projects</h3>
                         <b>
-                            <p>2024 - Present</p>
+                            <p>Ongoing</p>
                         </b>
                     </div>
                 </div>
             </div>
             <div className="text-block">
                 <p>
-                    Privacy-focused AI workspace application built with Electron, React, and 
-                    TypeScript, featuring local-first architecture with Ollama integration for 
-                    on-device AI processing. A comprehensive productivity suite combining chat, 
-                    canvas, calendar, and document editing in a unified interface.
+                    Hands-on with Linux systems, self-hosted infrastructure, and home networking,
+                    building practical skills that feed directly into my Cybersecurity studies.
                 </p>
                 <br />
                 <ul>
                     <li>
                         <p>
-                            Architected a sophisticated multi-modal interface featuring integrated 
-                            chat, visual canvas (Palette), calendar system (Chronos), and rich 
-                            document editor (Zenith) with seamless component interoperability.
+                            Run a homelab self-hosting services on Linux and Raspberry Pi,
+                            managing everything from setup to ongoing maintenance.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Implemented "Synapse" context intelligence system for advanced AI 
-                            context management, eliminating hallucinations through intelligent 
-                            prompt engineering and context optimization.
+                            Built automation workflows with n8n to connect and streamline
+                            self-hosted services and personal tools.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Optimized React component rendering and state management, reducing 
-                            unnecessary re-renders by over 60% and significantly improving 
-                            application performance through strategic memoization and effect optimization.
+                            Configure and harden home routers and network segments, and run
+                            services inside VMs for testing and isolation.
                         </p>
                     </li>
                     <li>
                         <p>
-                            Developed comprehensive macOS code signing and notarization pipeline, 
-                            navigating complex Apple distribution requirements for secure application delivery.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Engineered local AI model integration with Ollama, enabling privacy-focused 
-                            AI capabilities without cloud dependencies, supporting multiple model 
-                            architectures and real-time streaming responses.
-                        </p>
-                    </li>
-                </ul>
-            </div>
-
-            {/* Network & Security */}
-            <div style={styles.headerContainer}>
-                <div style={styles.header}>
-                    <div style={styles.headerRow}>
-                        <h1>Network Engineering & Security</h1>
-                        <h4>Linux & Cisco Infrastructure</h4>
-                    </div>
-                    <div style={styles.headerRow}>
-                        <h3>Systems & Security Engineer</h3>
-                        <b>
-                            <p>2023 - Present</p>
-                        </b>
-                    </div>
-                </div>
-            </div>
-            <div className="text-block">
-                <p>
-                    Specialized in Linux system administration, Cisco network infrastructure, 
-                    and security assessment. Conducted ethical hacking and penetration testing 
-                    to help organizations identify and remediate vulnerabilities across their 
-                    network and server environments.
-                </p>
-                <br />
-                <ul>
-                    <li>
-                        <p>
-                            Performed comprehensive penetration testing and vulnerability assessments 
-                            for organizations, identifying critical security flaws in network 
-                            configurations, system hardening, and access control mechanisms.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Managed and configured Linux server environments (Ubuntu, Debian) 
-                            including VPS infrastructure, implementing security best practices, 
-                            automated deployments, and system monitoring solutions.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Designed and implemented Cisco network infrastructure with focus on 
-                            network segmentation, VLAN configuration, routing protocols, and 
-                            firewall security to protect enterprise environments.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Developed security testing methodologies and created detailed vulnerability 
-                            reports with actionable remediation strategies, helping organizations 
-                            strengthen their security posture and comply with industry standards.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Researched emerging threats and attack vectors, staying current with 
-                            the latest security tools, penetration testing frameworks, and defensive 
-                            strategies across Linux and network environments.
+                            Practice wardriving to survey and better understand wireless network
+                            exposure as part of learning offensive and defensive security concepts.
                         </p>
                     </li>
                 </ul>
