@@ -16,9 +16,9 @@ const About: React.FC<AboutProps> = (props) => {
             <br />
             <div className="text-block">
                 <p>
-                    I'm a AI Full-Stack Dev currently working on my projects! In May
-                    of 2024 I graduated from Riverland Community College
-                    with my AS in Computer Tech.
+                    I'm a Cybersecurity Student & Developer currently working
+                    on my projects! In May of 2024 I graduated from Riverland
+                    Community College with my AS in Computer Tech.
                 </p>
                 <br />
                 <p>
@@ -27,7 +27,7 @@ const About: React.FC<AboutProps> = (props) => {
                     building it. If you have any questions or comments, feel
                     free to contact me using{' '}
                     <Link to="/contact">this form</Link> or shoot me an email {' '}
-                    <a href="mailto:bryan@webvisionrank.com">
+                    <a href="mailto:bryan.parreira@mnsu.edu">
                         here
                     </a>
                 </p>
@@ -97,13 +97,6 @@ const About: React.FC<AboutProps> = (props) => {
                             working out, cooking, and (unsurprisingly) playing
                             video games.
                         </p>
-                        <br />
-                        <p>
-                            In college, I was an active member in the fraternity
-                            Sigma Alpha Epsilon and held multiple positions in
-                            the chapter. I met a lot of amazing people through
-                            my fraternity and thoroughly enjoyed the community.
-                        </p>
                     </div>
                     <div style={styles.verticalImage}>
                         <img src={me} style={styles.image} alt="" />
@@ -128,7 +121,7 @@ const About: React.FC<AboutProps> = (props) => {
                     If you have any questions or comments I would love to hear
                     them. You can reach me through the{' '}
                     <Link to="/contact">contact page</Link> or shoot me an email {' '}
-                    <a href="mailto:bryan@webvisionrank.com">
+                    <a href="mailto:bryan.parreira@mnsu.edu">
                        here
                     </a>
                 </p>

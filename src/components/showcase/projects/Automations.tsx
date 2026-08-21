@@ -1,8 +1,6 @@
 import React from 'react';
 // @ts-ignore
 import ResumeDownload from '../ResumeDownload';
-import auto1 from '../../../assets/pictures/projects/software/auto1.png';
-import auto3 from '../../../assets/pictures/projects/software/auto3.png';
 
 export interface AutomationProjectsProps {}
 
@@ -31,16 +29,6 @@ const AutomationProjects: React.FC<AutomationProjectsProps> = (props) => {
                     communication and data management.
                 </p>
                 <br />
-                <div className="captioned-image">
-                    <img src={auto1} alt="Automation" style={styles.image} />
-                    <div style={styles.caption}>
-                        <sub>
-                            <b>Figure 1:</b> Complex n8n workflow showing the
-                            interconnected nodes that power automated business
-                            processes.
-                        </sub>
-                    </div>
-                </div>
                 <p>
                     The beauty of n8n is its flexibility - I can integrate
                     virtually any service or API, create custom logic with
@@ -91,15 +79,6 @@ const AutomationProjects: React.FC<AutomationProjectsProps> = (props) => {
                     responses, and adapt messaging based on engagement patterns.
                 </p>
                 <br />
-                <div className="captioned-image">
-                    <img src={auto3} alt="Automation" style={styles.image} />
-                    <div style={styles.caption}>
-                        <sub>
-                            <b>Figure 2:</b> AI-enhanced workflow showing
-                            personalization logic and response handling.
-                        </sub>
-                    </div>
-                </div>
                 <p>
                     This combination of automation and AI creates experiences
                     that feel personal despite being completely automated.
@@ -146,16 +125,6 @@ const AutomationProjects: React.FC<AutomationProjectsProps> = (props) => {
             <ResumeDownload />
         </div>
     );
-};
-
-const styles: StyleSheetCSS = {
-    video: {
-        width: '100%',
-        padding: 12,
-    },
-    caption: {
-        width: '80%',
-    },
 };
 
 export default AutomationProjects;

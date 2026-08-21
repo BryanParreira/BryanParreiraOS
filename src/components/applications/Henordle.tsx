@@ -16,7 +16,7 @@ const HenordleApp: React.FC<HenordleAppProps> = (props) => {
             closeWindow={props.onClose}
             onInteract={props.onInteract}
             minimizeWindow={props.onMinimize}
-            bottomLeftText={'© Copyright 2025 Bryan Bernardo Parreira'}
+            bottomLeftText={'© Copyright 2026 Bryan Bernardo Parreira'}
         >
             <div className="site-page">
                 <Wordle />

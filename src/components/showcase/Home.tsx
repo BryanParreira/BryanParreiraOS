@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from '../general';
 
-import forhire from '../../assets/pictures/forHireGif.gif';
 import { useNavigate } from 'react-router';
 
 export interface HomeProps {}
@@ -17,7 +16,7 @@ const Home: React.FC<HomeProps> = (props) => {
         <div style={styles.page}>
             <div style={styles.header}>
                 <h1 style={styles.name}>Bryan Parreira</h1>
-                <h2>AI Full-Stack Developer</h2>
+                <h2>Cybersecurity Student & Developer</h2>
             </div>
             <div style={styles.buttons}>
                 <Link containerStyle={styles.link} to="about" text="ABOUT" />
