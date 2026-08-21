@@ -68,7 +68,7 @@ const Experience: React.FC<ExperienceProps> = (props) => {
                         </a>
                     </div>
                     <div style={styles.headerRow}>
-                        <h3>Contributor</h3>
+                        <h3>Developer & Security</h3>
                         <b>
                             <p>January 2026 - Present</p>
                         </b>
@@ -96,6 +96,12 @@ const Experience: React.FC<ExperienceProps> = (props) => {
                             forecasting, and anomaly detection.
                         </p>
                     </li>
+                    <li>
+                        <p>
+                            Reviewing authentication and data handling flows to keep
+                            financial data secure across the platform.
+                        </p>
+                    </li>
                 </ul>
             </div>
 
@@ -113,7 +119,7 @@ const Experience: React.FC<ExperienceProps> = (props) => {
                         </a>
                     </div>
                     <div style={styles.headerRow}>
-                        <h3>Contributor</h3>
+                        <h3>Developer & Security</h3>
                         <b>
                             <p>January 2026 - Present</p>
                         </b>
@@ -138,6 +144,12 @@ const Experience: React.FC<ExperienceProps> = (props) => {
                         <p>
                             Helping build the reporting and supervisor sign-off workflow for
                             clinical staff.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Reviewing access controls and record-handling practices to keep
+                            patient data secure and compliant.
                         </p>
                     </li>
                 </ul>
