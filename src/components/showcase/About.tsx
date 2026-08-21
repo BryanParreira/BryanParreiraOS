@@ -95,22 +95,29 @@ const About: React.FC<AboutProps> = (props) => {
                             and Raspberry Pis that I've talked myself into
                             "needing," and I'm constantly rewiring them with
                             new{' '}
-                            <Link to="/projects/Automations">automations</Link>{' '}
-                            just to see if I can. I've also gotten into
-                            wardriving on weekends, which is a fun excuse to
-                            drive around with a laptop and pretend I'm in a
-                            heist movie while actually just mapping wireless
-                            networks. When I do manage to step away from
-                            screens, you'll find me at the gym, messing around
-                            in the kitchen trying not to burn anything, or
-                            losing track of time in a video game.
+                            <Link to="/projects/Automations">automations</Link>.
+                            I love distro-hopping and hardware-hopping just to
+                            see what breaks and what a new setup can teach me,
+                            whether it's spinning up the latest release of
+                            Arch, Debian, or whatever distro I'm currently
+                            obsessed with, or tearing into routers and firewalls
+                            to build out segmented networks, VLANs, and pfSense
+                            or OPNsense setups just to see how far I can lock
+                            things down. I've also gotten into wardriving on
+                            weekends, which is a fun excuse to drive around
+                            with a laptop and pretend I'm in a heist movie
+                            while actually just mapping wireless networks.
+                            When I do manage to step away from screens, you'll
+                            find me at the gym, messing around in the kitchen
+                            trying not to burn anything, or losing track of
+                            time in a video game.
                         </p>
                     </div>
                     <div style={styles.verticalImage}>
                         <img src={me} style={styles.image} alt="" />
                         <p>
                             <sub>
-                                <b>Figure 2:</b> Me, April 2022
+                                <b>Figure 2:</b> Me, in front of the White House
                             </sub>
                         </p>
                     </div>
