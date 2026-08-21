@@ -145,7 +145,7 @@ const VeloProject: React.FC<VeloProjectProps> = (props) => {
 const styles: StyleSheetCSS = {
     image: {
         width: '100%',
-        maxWidth: 480,
+        maxWidth: 700,
         padding: 12,
     },
     caption: {
