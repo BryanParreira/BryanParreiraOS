@@ -89,13 +89,21 @@ const About: React.FC<AboutProps> = (props) => {
                         <h3>My Hobbies</h3>
                         <br />
                         <p>
-                            Beyond work, I spend a lot of my free time running
-                            my homelab, tinkering with Linux and Raspberry Pi,
-                            and building out{' '}
+                            When I'm not staring at a monitor for work, I'm
+                            usually staring at a different monitor for fun. My
+                            homelab is basically a small pile of Linux boxes
+                            and Raspberry Pis that I've talked myself into
+                            "needing," and I'm constantly rewiring them with
+                            new{' '}
                             <Link to="/projects/Automations">automations</Link>{' '}
-                            for my own tools. Some other hobbies I enjoy are
-                            working out, cooking, and (unsurprisingly) playing
-                            video games.
+                            just to see if I can. I've also gotten into
+                            wardriving on weekends, which is a fun excuse to
+                            drive around with a laptop and pretend I'm in a
+                            heist movie while actually just mapping wireless
+                            networks. When I do manage to step away from
+                            screens, you'll find me at the gym, messing around
+                            in the kitchen trying not to burn anything, or
+                            losing track of time in a video game.
                         </p>
                     </div>
                     <div style={styles.verticalImage}>

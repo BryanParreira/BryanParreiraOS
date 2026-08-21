@@ -47,38 +47,97 @@ const Experience: React.FC<ExperienceProps> = (props) => {
                     </li>
                     <li>
                         <p>
-                            Contributing to{' '}
-                            <a
-                                rel="noreferrer"
-                                target="_blank"
-                                href={'https://valerium.grovicdata.com/'}
-                            >
-                                Valerium
-                            </a>
-                            , a business management platform built on Open Finance that unifies
-                            banking, invoicing, CRM, and AI-driven financial insights for small
-                            and medium businesses in Brazil.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Contributing to{' '}
-                            <a
-                                rel="noreferrer"
-                                target="_blank"
-                                href={'https://prontusmart.grovicdata.com'}
-                            >
-                                ProntuSMART
-                            </a>
-                            , a digital health records system for clinics and hospitals covering
-                            appointment scheduling, patient flow, insurance billing, and clinical
-                            supervision.
-                        </p>
-                    </li>
-                    <li>
-                        <p>
                             Helping design automation pipelines and real-time analytics/KPI
                             dashboards that integrate with existing ERP, CRM, and BI systems.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            {/* Valerium */}
+            <div style={styles.headerContainer}>
+                <div style={styles.header}>
+                    <div style={styles.headerRow}>
+                        <h1>Valerium</h1>
+                        <a
+                            rel="noreferrer"
+                            target="_blank"
+                            href={'https://valerium.grovicdata.com/'}
+                        >
+                            <h4>valerium.grovicdata.com</h4>
+                        </a>
+                    </div>
+                    <div style={styles.headerRow}>
+                        <h3>Contributor</h3>
+                        <b>
+                            <p>January 2026 - Present</p>
+                        </b>
+                    </div>
+                </div>
+            </div>
+            <div className="text-block">
+                <p>
+                    A business management platform built on Open Finance that unifies
+                    banking, invoicing, CRM, and AI-driven financial insights for small
+                    and medium businesses in Brazil.
+                </p>
+                <br />
+                <ul>
+                    <li>
+                        <p>
+                            Contributing to the platform's finance and CRM features, including
+                            automatic bank transaction syncing, invoicing, and receipt
+                            reconciliation.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Helping build the AI assistant layer for financial insights,
+                            forecasting, and anomaly detection.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            {/* ProntuSMART */}
+            <div style={styles.headerContainer}>
+                <div style={styles.header}>
+                    <div style={styles.headerRow}>
+                        <h1>ProntuSMART</h1>
+                        <a
+                            rel="noreferrer"
+                            target="_blank"
+                            href={'https://prontusmart.grovicdata.com'}
+                        >
+                            <h4>prontusmart.grovicdata.com</h4>
+                        </a>
+                    </div>
+                    <div style={styles.headerRow}>
+                        <h3>Contributor</h3>
+                        <b>
+                            <p>January 2026 - Present</p>
+                        </b>
+                    </div>
+                </div>
+            </div>
+            <div className="text-block">
+                <p>
+                    A digital health records system for clinics and hospitals covering
+                    appointment scheduling, patient flow, insurance billing, and clinical
+                    supervision.
+                </p>
+                <br />
+                <ul>
+                    <li>
+                        <p>
+                            Contributing to the patient record and clinical evolution features
+                            used by clinics to track patients through their visits.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Helping build the reporting and supervisor sign-off workflow for
+                            clinical staff.
                         </p>
                     </li>
                 </ul>
