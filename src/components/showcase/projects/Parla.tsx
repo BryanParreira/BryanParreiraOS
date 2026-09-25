@@ -42,11 +42,12 @@ const ParlaProject: React.FC<ParlaProjectProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <img src={parla1} alt="Parla" style={styles.image} />
+                    <img src={parla1} alt="Parla Home" style={styles.image} />
                     <div style={styles.caption}>
                         <sub>
-                            <b>Figure 1:</b> Parla, with the dotted recording
-                            orb that appears while you speak.
+                            <b>Figure 1:</b> The home screen, with the
+                            dictation key and stats on words dictated,
+                            speaking speed and time saved.
                         </sub>
                     </div>
                 </div>
@@ -106,13 +107,13 @@ const ParlaProject: React.FC<ParlaProjectProps> = (props) => {
                 <div className="captioned-image">
                     <img
                         src={parla2}
-                        alt="Parla Installer"
+                        alt="Parla Settings"
                         style={styles.image}
                     />
                     <div style={styles.caption}>
                         <sub>
-                            <b>Figure 2:</b> The signed and notarized DMG
-                            installer.
+                            <b>Figure 2:</b> Settings for choosing the
+                            dictation key and hands-free shortcuts.
                         </sub>
                     </div>
                 </div>
