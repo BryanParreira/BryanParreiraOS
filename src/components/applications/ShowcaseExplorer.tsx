@@ -7,7 +7,8 @@ import Experience from '../showcase/Experience';
 import Projects from '../showcase/Projects';
 import Contact from '../showcase/Contact';
 import Automations from '../showcase/projects/Automations';
-import Velo from '../showcase/projects/Velo';
+import Notiz from '../showcase/projects/Notiz';
+import Parla from '../showcase/projects/Parla';
 import Valerium from '../showcase/projects/Valerium';
 import ProntuSMART from '../showcase/projects/ProntuSMART';
 import VerticalNavbar from '../showcase/VerticalNavbar';
@@ -44,7 +45,8 @@ const ShowcaseExplorer: React.FC<ShowcaseExplorerProps> = (props) => {
                             path="/projects/Automations"
                             element={<Automations />}
                         />
-                        <Route path="/projects/Velo" element={<Velo />} />
+                        <Route path="/projects/Notiz" element={<Notiz />} />
+                        <Route path="/projects/Parla" element={<Parla />} />
                         <Route
                             path="/projects/Valerium"
                             element={<Valerium />}
