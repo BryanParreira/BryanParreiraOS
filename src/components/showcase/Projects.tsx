@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import software from '../../assets/pictures/projects/software.gif';
+import valeriumImage from '../../assets/pictures/projects/software/Valerium2.png';
+import prontusmartImage from '../../assets/pictures/projects/software/Prontusmart1.png';
 import { APPS, AppProject } from './projects/apps';
 import useLatestRelease, {
     detectPlatform,
@@ -75,25 +77,62 @@ const AppCard: React.FC<{ app: AppProject }> = ({ app }) => {
     );
 };
 
-interface ProjectBoxProps {
+interface WorkCardProps {
     title: string;
-    subtitle: string;
+    tagline: string;
+    meta: string;
     route: string;
+    image?: string;
+    site?: string;
 }
 
-const ProjectBox: React.FC<ProjectBoxProps> = ({ title, subtitle, route }) => {
-    const navigation = useNavigate();
+const WorkCard: React.FC<WorkCardProps> = ({
+    title,
+    tagline,
+    meta,
+    route,
+    image,
+    site,
+}) => {
+    const navigate = useNavigate();
+    const openDetails = () => navigate(`/projects/${route}`);
 
     return (
         <div
-            onClick={() => navigation(`/projects/${route}`)}
-            className="big-button-container project-box"
+            className="big-button-container app-card"
+            onClick={openDetails}
             role="link"
         >
-            <img src={software} style={styles.projectLinkImage} alt="" />
-            <div style={styles.projectText}>
-                <h2>{title}</h2>
-                <p>{subtitle}</p>
+            {image ? (
+                <img src={image} alt="" className="work-card-image" />
+            ) : (
+                <img src={software} alt="" style={styles.workIcon} />
+            )}
+            <h2>{title}</h2>
+            <p style={styles.version}>{meta}</p>
+            <h4 style={styles.workTagline}>{tagline}</h4>
+            <div style={styles.spacer} />
+            <div style={styles.cardButtons}>
+                {site && (
+                    <a
+                        className="site-button download-button"
+                        href={site}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        Visit Site
+                    </a>
+                )}
+                <button
+                    className="site-button"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        openDetails();
+                    }}
+                >
+                    Details
+                </button>
             </div>
         </div>
     );
@@ -106,37 +145,54 @@ const Projects: React.FC<ProjectsProps> = (props) => {
             <h3>& Hobbies</h3>
             <br />
             <p>
-                Here's what I've been building. The apps below are free to
-                download and run entirely on your own machine, no account
-                needed. Click any of them to see screenshots, how it works and
-                every download option.
+                Here's what I've been building: my own desktop apps, the
+                platforms I help build at Grovic Data, and automation work.
+                Click any project to see screenshots and how it works.
             </p>
-            <br />
-            <h2>Apps</h2>
-            <br />
+            <h4 className="section-label">Apps</h4>
+            <p style={styles.sectionIntro}>
+                Free to download. Each one runs entirely on your own machine,
+                no account needed.
+            </p>
             <div className="app-grid">
                 {APPS.map((app) => (
                     <AppCard key={app.slug} app={app} />
                 ))}
             </div>
-            <br />
-            <h2>Other Work</h2>
-            <br />
-            <div style={styles.projectLinksContainer}>
-                <ProjectBox
-                    title="Automations"
-                    subtitle="Business Process Automation"
-                    route="Automations"
-                />
-                <ProjectBox
+            <h4 className="section-label">Grovic Data Products</h4>
+            <p style={styles.sectionIntro}>
+                Platforms I build with my team at Grovic Data, where I'm a
+                co-founder.
+            </p>
+            <div className="app-grid">
+                <WorkCard
                     title="Valerium"
-                    subtitle="Open Finance Business Management Platform"
+                    meta="Web platform · Developer & Security"
+                    tagline="Open Finance Business Management Platform"
                     route="Valerium"
+                    image={valeriumImage}
+                    site="https://valerium.grovicdata.com/"
                 />
-                <ProjectBox
+                <WorkCard
                     title="ProntuSMART"
-                    subtitle="Digital Health Records System"
+                    meta="Web platform · Developer & Security"
+                    tagline="Digital Health Records System"
                     route="ProntuSMART"
+                    image={prontusmartImage}
+                    site="https://prontusmart.grovicdata.com"
+                />
+            </div>
+            <h4 className="section-label">Automation</h4>
+            <p style={styles.sectionIntro}>
+                Workflows that take repetitive business work off people's
+                plates.
+            </p>
+            <div className="app-grid">
+                <WorkCard
+                    title="Automations"
+                    meta="n8n workflows"
+                    tagline="Business Process Automation"
+                    route="Automations"
                 />
             </div>
         </div>
@@ -176,20 +232,16 @@ const styles: StyleSheetCSS = {
         flexWrap: 'wrap',
         gap: 8,
     },
-    projectLinksContainer: {
-        flexDirection: 'column',
-        width: '100%',
+    sectionIntro: {
+        marginBottom: 16,
     },
-    projectText: {
-        justifyContent: 'center',
-        flexDirection: 'column',
-        minWidth: 0,
-    },
-    projectLinkImage: {
+    workIcon: {
         width: 56,
         height: 56,
-        marginRight: 24,
-        flexShrink: 0,
+        marginBottom: 12,
+    },
+    workTagline: {
+        marginTop: 8,
     },
 };
 

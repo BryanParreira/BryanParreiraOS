@@ -1,15 +1,25 @@
 {
-    "short_name": "Henry Heffernan",
-    "name": "Henry Heffernan Portfolio Showcase 2022",
+    "short_name": "Bryan Parreira",
+    "name": "Bryan Parreira - Showcase OS",
     "icons": [
         {
             "src": "favicon.ico",
-            "sizes": "64x64 32x32 24x24 16x16",
+            "sizes": "48x48 32x32 16x16",
             "type": "image/x-icon"
+        },
+        {
+            "src": "bryanos-icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "bryanos-icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
         }
     ],
     "start_url": ".",
     "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff"
+    "theme_color": "#3e9697",
+    "background_color": "#3e9697"
 }

@@ -581,3 +581,61 @@ input:active {
 .site-page.compact .download-panel .download-button {
     align-self: stretch;
 }
+
+/* Section headings on Experience and Projects */
+
+.section-label {
+    margin-top: 40px;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid black;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.work-card-image {
+    width: calc(100% + 40px);
+    height: 160px;
+    margin: -20px -20px 16px;
+    object-fit: cover;
+    object-position: top;
+    border-bottom: 2px solid black;
+    image-rendering: auto;
+}
+
+/* Experience entries */
+
+.xp-entry {
+    flex-direction: column;
+    padding-left: 20px;
+    margin-bottom: 40px;
+    border-left: 4px solid black;
+}
+
+.xp-entry-nested {
+    margin-top: 24px;
+    margin-bottom: 0;
+    padding-left: 16px;
+    border-left: 2px dashed #555;
+}
+
+.xp-entry li {
+    margin-bottom: 10px;
+}
+
+.date-badge {
+    font-family: MSSerif, sans-serif;
+    font-size: 14px;
+    padding: 2px 8px;
+    border: 1px solid black;
+    background: var(--surface-hover);
+    white-space: nowrap;
+}
+
+.site-page.compact .xp-entry {
+    padding-left: 12px;
+}
+
+.site-page.compact .xp-entry-nested {
+    padding-left: 10px;
+}

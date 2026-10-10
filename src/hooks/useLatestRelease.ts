@@ -89,13 +89,16 @@ const parseRelease = (raw: any): Release | null => {
     };
 };
 
-const readCache = (repo: string): Release | null => {
+// Kept across visits so returning visitors don't spend GitHub's 60
+// requests an hour; an expired copy still beats nothing if GitHub says no
+const readCache = (
+    repo: string
+): { release: Release; fresh: boolean } | null => {
     try {
-        const cached = sessionStorage.getItem(`release:${repo}`);
+        const cached = localStorage.getItem(`release:${repo}`);
         if (!cached) return null;
         const { savedAt, release } = JSON.parse(cached);
-        if (Date.now() - savedAt > CACHE_TTL_MS) return null;
-        return release;
+        return { release, fresh: Date.now() - savedAt < CACHE_TTL_MS };
     } catch (e) {
         return null;
     }
@@ -103,7 +106,7 @@ const readCache = (repo: string): Release | null => {
 
 const writeCache = (repo: string, release: Release) => {
     try {
-        sessionStorage.setItem(
+        localStorage.setItem(
             `release:${repo}`,
             JSON.stringify({ savedAt: Date.now(), release })
         );
@@ -138,7 +141,7 @@ const fetchLatestRelease = (repo: string): Promise<Release | null> => {
             .catch(() => {
                 // Let a later mount try again
                 delete pending[repo];
-                return null;
+                return readCache(repo)?.release || null;
             });
     }
     return pending[repo];
@@ -148,12 +151,12 @@ export default function useLatestRelease(repo: string): ReleaseState {
     const [state, setState] = useState<ReleaseState>(() => {
         const cached = readCache(repo);
         return cached
-            ? { status: 'ready', release: cached }
+            ? { status: 'ready', release: cached.release }
             : { status: 'loading' };
     });
 
     useEffect(() => {
-        if (state.status === 'ready') return;
+        if (readCache(repo)?.fresh) return;
         let isMounted = true;
         fetchLatestRelease(repo).then((release) => {
             if (!isMounted) return;
