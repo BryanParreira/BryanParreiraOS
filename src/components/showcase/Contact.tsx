@@ -114,7 +114,7 @@ const Contact: React.FC<ContactProps> = (props) => {
 
     return (
         <div className="site-page-content">
-            <div style={styles.header}>
+            <div className="header-row" style={styles.header}>
                 <h1>Contact</h1>
                 <div style={styles.socials}>
                     <SocialBox

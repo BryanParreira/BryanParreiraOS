@@ -291,6 +291,7 @@ const styles: StyleSheetCSS = {
     tabContainerOuter: {
         display: 'flex',
         flex: 1,
+        minWidth: 0,
         maxWidth: 300,
         marginRight: 4,
         boxSizing: 'border-box',
@@ -307,6 +308,8 @@ const styles: StyleSheetCSS = {
         alignItems: 'center',
         paddingLeft: 4,
         flex: 1,
+        minWidth: 0,
+        overflow: 'hidden',
     },
     tabIcon: {
         marginRight: 6,
@@ -371,6 +374,9 @@ const styles: StyleSheetCSS = {
     tabText: {
         fontSize: 14,
         fontFamily: 'MSSerif',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
     },
     timeText: {
         fontSize: 12,

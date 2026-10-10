@@ -140,7 +140,10 @@ const styles: StyleSheetCSS = {
         overflow: 'none',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        width: 600,
+        width: '100%',
+        maxWidth: 600,
+        padding: '0 16px',
+        boxSizing: 'border-box',
         alignSelf: 'center',
     },
     section: {

@@ -1,63 +1,100 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router';
 import software from '../../assets/pictures/projects/software.gif';
+import { APPS, AppProject } from './projects/apps';
+import useLatestRelease, {
+    detectPlatform,
+    platformLabel,
+} from '../../hooks/useLatestRelease';
 
 export interface ProjectsProps {}
 
-interface ProjectBoxProps {
-    icon: string;
-    title: string;
-    subtitle: string;
-    route: string;
-    iconStyle: React.CSSProperties;
-}
+const visitorPlatform = detectPlatform();
 
-const ProjectBox: React.FC<ProjectBoxProps> = ({
-    icon,
-    title,
-    subtitle,
-    route,
-    iconStyle,
-}) => {
-    const [, setIsHovering] = useState(false);
-    const navigation = useNavigate();
+const AppCard: React.FC<{ app: AppProject }> = ({ app }) => {
+    const navigate = useNavigate();
+    const release = useLatestRelease(app.repo);
 
-    const handleClick = () => {
-        navigation(`/projects/${route}`);
-    };
+    const openDetails = () => navigate(`/projects/${app.slug}`);
 
-    const onMouseEnter = () => {
-        setIsHovering(true);
-    };
-
-    const onMouseLeave = () => {
-        setIsHovering(false);
-    };
+    // Straight to the installer for the visitor's system when there is one
+    let downloadUrl = `https://github.com/${app.repo}/releases/latest`;
+    let downloadLabel = 'Download';
+    if (release.status === 'ready') {
+        const asset = release.release.assets.find(
+            (a) => a.platform === visitorPlatform
+        );
+        if (asset) {
+            downloadUrl = asset.url;
+            downloadLabel = `Download for ${asset.label}`;
+        }
+    }
 
     return (
         <div
-            onMouseDown={handleClick}
-            className="big-button-container"
-            style={styles.projectLink}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
+            className="big-button-container app-card"
+            onClick={openDetails}
+            role="link"
         >
-            <div style={styles.projectLinkLeft}>
-                <img
-                    src={icon}
-                    style={Object.assign(
-                        {},
-                        styles.projectLinkImage,
-                        iconStyle
-                    )}
-                    alt=""
-                />
-                <div style={styles.projectText}>
-                    <h1 style={{ fontSize: 48 }}>{title}</h1>
-                    <h3>{subtitle}</h3>
+            <div style={styles.cardHeader}>
+                <img src={app.icon} alt="" style={styles.appIcon} />
+                <div style={styles.cardTitle}>
+                    <h2>{app.name}</h2>
+                    <p style={styles.version}>
+                        {release.status === 'ready'
+                            ? `v${release.release.version}`
+                            : app.price}
+                    </p>
                 </div>
             </div>
-            <div style={styles.projectLinkRight}></div>
+            <h4 style={styles.tagline}>{app.tagline}</h4>
+            <p style={styles.platforms}>
+                {app.platforms.map(platformLabel).join(' · ')}
+            </p>
+            <div style={styles.spacer} />
+            <div style={styles.cardButtons}>
+                <a
+                    className="site-button download-button"
+                    href={downloadUrl}
+                    rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    {downloadLabel}
+                </a>
+                <button
+                    className="site-button"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        openDetails();
+                    }}
+                >
+                    Details
+                </button>
+            </div>
+        </div>
+    );
+};
+
+interface ProjectBoxProps {
+    title: string;
+    subtitle: string;
+    route: string;
+}
+
+const ProjectBox: React.FC<ProjectBoxProps> = ({ title, subtitle, route }) => {
+    const navigation = useNavigate();
+
+    return (
+        <div
+            onClick={() => navigation(`/projects/${route}`)}
+            className="big-button-container project-box"
+            role="link"
+        >
+            <img src={software} style={styles.projectLinkImage} alt="" />
+            <div style={styles.projectText}>
+                <h2>{title}</h2>
+                <p>{subtitle}</p>
+            </div>
         </div>
     );
 };
@@ -69,46 +106,36 @@ const Projects: React.FC<ProjectsProps> = (props) => {
             <h3>& Hobbies</h3>
             <br />
             <p>
-                Click on one of the areas below to check out some of my favorite
-                projects I've done in that field. I spent a lot of time to
-                include a lot of visuals and interactive media to showcase each
-                project. Enjoy!
+                Here's what I've been building. The apps below are free to
+                download and run entirely on your own machine, no account
+                needed. Click any of them to see screenshots, how it works and
+                every download option.
             </p>
+            <br />
+            <h2>Apps</h2>
+            <br />
+            <div className="app-grid">
+                {APPS.map((app) => (
+                    <AppCard key={app.slug} app={app} />
+                ))}
+            </div>
+            <br />
+            <h2>Other Work</h2>
             <br />
             <div style={styles.projectLinksContainer}>
                 <ProjectBox
-                    icon={software}
-                    iconStyle={styles.computerIcon}
-                    title="Notiz"
-                    subtitle="PROJECTS"
-                    route="Notiz"
-                />
-                <ProjectBox
-                    icon={software}
-                    iconStyle={styles.computerIcon}
-                    title="Parla"
-                    subtitle="PROJECTS"
-                    route="Parla"
-                />
-                <ProjectBox
-                    icon={software}
-                    iconStyle={styles.computerIcon}
                     title="Automations"
-                    subtitle="PROJECTS"
+                    subtitle="Business Process Automation"
                     route="Automations"
                 />
                 <ProjectBox
-                    icon={software}
-                    iconStyle={styles.computerIcon}
                     title="Valerium"
-                    subtitle="PROJECTS"
+                    subtitle="Open Finance Business Management Platform"
                     route="Valerium"
                 />
                 <ProjectBox
-                    icon={software}
-                    iconStyle={styles.computerIcon}
                     title="ProntuSMART"
-                    subtitle="PROJECTS"
+                    subtitle="Digital Health Records System"
                     route="ProntuSMART"
                 />
             </div>
@@ -117,37 +144,52 @@ const Projects: React.FC<ProjectsProps> = (props) => {
 };
 
 const styles: StyleSheetCSS = {
+    cardHeader: {
+        alignItems: 'center',
+        marginBottom: 12,
+    },
+    appIcon: {
+        width: 64,
+        height: 64,
+        marginRight: 16,
+        imageRendering: 'auto',
+    },
+    cardTitle: {
+        flexDirection: 'column',
+    },
+    version: {
+        fontSize: 15,
+        color: '#555',
+    },
+    tagline: {
+        marginBottom: 4,
+    },
+    platforms: {
+        fontSize: 15,
+        color: '#555',
+    },
+    spacer: {
+        flex: 1,
+        minHeight: 16,
+    },
+    cardButtons: {
+        flexWrap: 'wrap',
+        gap: 8,
+    },
     projectLinksContainer: {
         flexDirection: 'column',
         width: '100%',
-        display: 'flex',
-        flex: 1,
-    },
-    projectLink: {
-        marginBottom: 24,
-        cursor: 'pointer',
-        width: '100%',
-        boxSizing: 'border-box',
-
-        alignItems: 'center',
-        justifyContent: 'space-between',
     },
     projectText: {
         justifyContent: 'center',
         flexDirection: 'column',
+        minWidth: 0,
     },
     projectLinkImage: {
-        width: 48,
-        // height: 48,
-        marginRight: 38,
-    },
-    projectLinkLeft: {
-        marginLeft: 16,
-        alignItems: 'center',
-    },
-    computerIcon: {
         width: 56,
         height: 56,
+        marginRight: 24,
+        flexShrink: 0,
     },
 };
 

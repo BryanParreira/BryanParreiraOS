@@ -1,9 +1,13 @@
 .App {
     height: 100vh;
+    /* Visible height on mobile browsers, so the taskbar isn't under the URL bar */
+    height: 100dvh;
     /* width: 1280px; */
     width: 100%;
     /* min-height: 100%; */
     image-rendering: pixelated;
+    /* Clips windows dragged past the edge, so phones don't zoom out */
+    position: relative;
     overflow-y: hidden;
     overflow-x: hidden;
 }

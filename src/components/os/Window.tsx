@@ -6,6 +6,30 @@ import Icon from '../general/Icon';
 import Button from './Button';
 import DragIndicator from './DragIndicator';
 import ResizeIndicator from './ResizeIndicator';
+import useViewport, { TOOLBAR_HEIGHT } from '../../hooks/useViewport';
+
+const MIN_WIDTH = 520;
+const MIN_HEIGHT = 220;
+
+// Keeps enough of the title bar on screen to drag the window back
+const TITLE_BAR_GRAB = 120;
+
+type Frame = { width: number; height: number; top: number; left: number };
+
+const fitFrame = (
+    frame: Frame,
+    viewportWidth: number,
+    viewportHeight: number
+): Frame => {
+    const width = Math.min(frame.width, viewportWidth);
+    const height = Math.min(frame.height, viewportHeight);
+    const left = Math.min(
+        Math.max(frame.left, TITLE_BAR_GRAB - width),
+        viewportWidth - TITLE_BAR_GRAB
+    );
+    const top = Math.min(Math.max(frame.top, 0), viewportHeight - 40);
+    return { width, height, top, left };
+};
 
 export interface WindowProps {
     closeWindow: () => void;
@@ -30,11 +54,15 @@ const Window: React.FC<WindowProps> = (props) => {
     const contentRef = useRef<any>(null);
 
     const dragProps = useRef<{
-        dragStartX: any;
-        dragStartY: any;
+        dragStartX: number;
+        dragStartY: number;
+        baseLeft: number;
+        baseTop: number;
     }>();
 
     const resizeRef = useRef<any>(null);
+
+    const viewport = useViewport();
 
     const [top, setTop] = useState(props.top);
     const [left, setLeft] = useState(props.left);
@@ -50,66 +78,77 @@ const Window: React.FC<WindowProps> = (props) => {
     const [windowActive, setWindowActive] = useState(true);
 
     const [isMaximized, setIsMaximized] = useState(false);
-    const [preMaxSize, setPreMaxSize] = useState({
-        width,
-        height,
-        top,
-        left,
-    });
 
     const [isDragging, setIsDragging] = useState(false);
     const [isResizing, setIsResizing] = useState(false);
 
-    const startResize = (event: any) => {
-        event.preventDefault();
+    // Phones always get a full screen window; elsewhere the window is
+    // shrunk to fit the screen and kept where its title bar can be grabbed
+    const isFullscreen = isMaximized || viewport.isMobile;
+    const desktopHeight = viewport.height - TOOLBAR_HEIGHT;
+    const frame = isFullscreen
+        ? { width: viewport.width, height: desktopHeight, top: 0, left: 0 }
+        : fitFrame(
+              { width, height, top, left },
+              viewport.width,
+              desktopHeight
+          );
+
+    // Pointer events so dragging and resizing also work with touch. Default
+    // isn't prevented, so the mousedown that brings the window forward fires
+    const startResize = () => {
+        if (isFullscreen) return;
         setIsResizing(true);
-        window.addEventListener('mousemove', onResize, false);
-        window.addEventListener('mouseup', stopResize, false);
+        window.addEventListener('pointermove', onResize, false);
+        window.addEventListener('pointerup', stopResize, false);
     };
 
-    const onResize = ({ clientX, clientY }: any) => {
-        const curWidth = clientX - left;
-        const curHeight = clientY - top;
-        if (curWidth > 520) resizeRef.current.style.width = `${curWidth}px`;
-        if (curHeight > 220) resizeRef.current.style.height = `${curHeight}px`;
+    const onResize = ({ clientX, clientY }: PointerEvent) => {
+        const curWidth = clientX - frame.left;
+        const curHeight = clientY - frame.top;
+        if (curWidth > MIN_WIDTH)
+            resizeRef.current.style.width = `${curWidth}px`;
+        if (curHeight > MIN_HEIGHT)
+            resizeRef.current.style.height = `${curHeight}px`;
         resizeRef.current.style.opacity = 1;
     };
 
     const stopResize = () => {
         setIsResizing(false);
-        setWidth(resizeRef.current.style.width);
-        setHeight(resizeRef.current.style.height);
+        setWidth(parseFloat(resizeRef.current.style.width));
+        setHeight(parseFloat(resizeRef.current.style.height));
         resizeRef.current.style.opacity = 0;
-        window.removeEventListener('mousemove', onResize, false);
-        window.removeEventListener('mouseup', stopResize, false);
+        window.removeEventListener('pointermove', onResize, false);
+        window.removeEventListener('pointerup', stopResize, false);
     };
 
-    const startDrag = (event: any) => {
+    const startDrag = (event: React.PointerEvent) => {
+        if (isFullscreen) return;
         const { clientX, clientY } = event;
         setIsDragging(true);
-        event.preventDefault();
         dragProps.current = {
             dragStartX: clientX,
             dragStartY: clientY,
+            baseLeft: frame.left,
+            baseTop: frame.top,
         };
-        window.addEventListener('mousemove', onDrag, false);
-        window.addEventListener('mouseup', stopDrag, false);
+        window.addEventListener('pointermove', onDrag, false);
+        window.addEventListener('pointerup', stopDrag, false);
     };
 
-    const onDrag = ({ clientX, clientY }: any) => {
+    const onDrag = ({ clientX, clientY }: PointerEvent) => {
         let { x, y } = getXYFromDragProps(clientX, clientY);
         dragRef.current.style.transform = `translate(${x}px, ${y}px)`;
         dragRef.current.style.opacity = 1;
     };
 
-    const stopDrag = ({ clientX, clientY }: any) => {
+    const stopDrag = ({ clientX, clientY }: PointerEvent) => {
         setIsDragging(false);
-        // dragRef.current.style.opacity = 0;
         const { x, y } = getXYFromDragProps(clientX, clientY);
         setTop(y);
         setLeft(x);
-        window.removeEventListener('mousemove', onDrag, false);
-        window.removeEventListener('mouseup', stopDrag, false);
+        window.removeEventListener('pointermove', onDrag, false);
+        window.removeEventListener('pointerup', stopDrag, false);
     };
 
     const getXYFromDragProps = (
@@ -117,16 +156,17 @@ const Window: React.FC<WindowProps> = (props) => {
         clientY: number
     ): { x: number; y: number } => {
         if (!dragProps.current) return { x: 0, y: 0 };
-        const { dragStartX, dragStartY } = dragProps.current;
+        const { dragStartX, dragStartY, baseLeft, baseTop } =
+            dragProps.current;
 
-        const x = clientX - dragStartX + left;
-        const y = clientY - dragStartY + top;
+        const x = clientX - dragStartX + baseLeft;
+        const y = clientY - dragStartY + baseTop;
 
         return { x, y };
     };
 
     useEffect(() => {
-        dragRef.current.style.transform = `translate(${left}px, ${top}px)`;
+        dragRef.current.style.transform = `translate(${frame.left}px, ${frame.top}px)`;
     });
 
     useEffect(() => {
@@ -139,32 +179,14 @@ const Window: React.FC<WindowProps> = (props) => {
 
     useEffect(() => {
         setContentWidth(contentRef.current.getBoundingClientRect().width);
-    }, [width]);
+    }, [frame.width]);
 
     useEffect(() => {
         setContentHeight(contentRef.current.getBoundingClientRect().height);
-    }, [height]);
+    }, [frame.height]);
 
     const maximize = () => {
-        if (isMaximized) {
-            setWidth(preMaxSize.width);
-            setHeight(preMaxSize.height);
-            setTop(preMaxSize.top);
-            setLeft(preMaxSize.left);
-            setIsMaximized(false);
-        } else {
-            setPreMaxSize({
-                width,
-                height,
-                top,
-                left,
-            });
-            setWidth(window.innerWidth);
-            setHeight(window.innerHeight - 32);
-            setTop(0);
-            setLeft(0);
-            setIsMaximized(true);
-        }
+        setIsMaximized(!isMaximized);
     };
 
     const onCheckClick = () => {
@@ -192,25 +214,24 @@ const Window: React.FC<WindowProps> = (props) => {
     return (
         <div onMouseDown={onWindowInteract} style={styles.container}>
             <div
-                style={Object.assign({}, styles.window, {
-                    width,
-                    height,
-                    top,
-                    left,
-                })}
+                style={Object.assign({}, styles.window, frame)}
                 ref={windowRef}
             >
                 <div style={styles.windowBorderOuter}>
                     <div style={styles.windowBorderInner}>
-                        <div
-                            style={styles.dragHitbox}
-                            onMouseDown={startDrag}
-                        ></div>
+                        {!isFullscreen && (
+                            <div
+                                style={styles.dragHitbox}
+                                onPointerDown={startDrag}
+                                onDoubleClick={maximize}
+                            ></div>
+                        )}
                         <div
                             className={props.rainbow ? 'rainbow-wrapper' : ''}
                             style={Object.assign(
                                 {},
                                 styles.topBar,
+                                viewport.isMobile && styles.topBarMobile,
                                 props.windowBarColor && {
                                     backgroundColor: props.windowBarColor,
                                 },
@@ -244,12 +265,21 @@ const Window: React.FC<WindowProps> = (props) => {
                                     {props.windowTitle}
                                 </p>
                             </div>
-                            <div style={styles.windowTopButtons}>
+                            <div
+                                style={Object.assign(
+                                    {},
+                                    styles.windowTopButtons,
+                                    viewport.isMobile &&
+                                        styles.windowTopButtonsMobile
+                                )}
+                            >
                                 <Button
                                     icon="minimize"
                                     onClick={props.minimizeWindow}
                                 />
-                                <Button icon="maximize" onClick={maximize} />
+                                {!viewport.isMobile && (
+                                    <Button icon="maximize" onClick={maximize} />
+                                )}
                                 <div style={{ paddingLeft: 2 }}>
                                     <Button
                                         icon="close"
@@ -269,10 +299,12 @@ const Window: React.FC<WindowProps> = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div
-                            onMouseDown={startResize}
-                            style={styles.resizeHitbox}
-                        ></div>
+                        {!isFullscreen && (
+                            <div
+                                onPointerDown={startResize}
+                                style={styles.resizeHitbox}
+                            ></div>
+                        )}
                         <div style={styles.bottomBar}>
                             <div
                                 style={Object.assign({}, styles.insetBorder, {
@@ -285,6 +317,8 @@ const Window: React.FC<WindowProps> = (props) => {
                                         fontSize: 12,
                                         marginLeft: 4,
                                         fontFamily: 'MSSerif',
+                                        whiteSpace: 'nowrap',
+                                        overflow: 'hidden',
                                     }}
                                 >
                                     {props.bottomLeftText}
@@ -339,10 +373,10 @@ const Window: React.FC<WindowProps> = (props) => {
                 }
             >
                 <ResizeIndicator
-                    top={top}
-                    left={left}
-                    width={width}
-                    height={height}
+                    top={frame.top}
+                    left={frame.left}
+                    width={frame.width}
+                    height={frame.height}
                     resizeRef={resizeRef}
                 />
             </div>
@@ -361,8 +395,8 @@ const Window: React.FC<WindowProps> = (props) => {
                 }
             >
                 <DragIndicator
-                    width={width}
-                    height={height}
+                    width={frame.width}
+                    height={frame.height}
                     dragRef={dragRef}
                 />
             </div>
@@ -383,6 +417,7 @@ const styles: StyleSheetCSS = {
         top: -8,
         left: -4,
         cursor: 'move',
+        touchAction: 'none',
     },
     windowBorderOuter: {
         border: `1px solid ${Colors.black}`,
@@ -406,6 +441,7 @@ const styles: StyleSheetCSS = {
         bottom: -20,
         right: -20,
         cursor: 'nwse-resize',
+        touchAction: 'none',
     },
     topBar: {
         backgroundColor: Colors.blue,
@@ -415,6 +451,9 @@ const styles: StyleSheetCSS = {
         alignItems: 'center',
         paddingRight: 2,
         boxSizing: 'border-box',
+    },
+    topBarMobile: {
+        height: 28,
     },
     contentOuter: {
         border: `1px solid ${Colors.white}`,
@@ -468,8 +507,15 @@ const styles: StyleSheetCSS = {
 
         alignItems: 'center',
     },
+    windowTopButtonsMobile: {
+        transform: 'scale(1.4)',
+        transformOrigin: 'right center',
+    },
     windowHeader: {
         flex: 1,
+        minWidth: 0,
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
         // justifyContent: 'center',
         // alignItems: 'center',
     },

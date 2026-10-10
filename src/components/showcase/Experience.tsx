@@ -11,7 +11,7 @@ const Experience: React.FC<ExperienceProps> = (props) => {
             {/* Grovic Data */}
             <div style={styles.headerContainer}>
                 <div style={styles.header}>
-                    <div style={styles.headerRow}>
+                    <div className="header-row" style={styles.headerRow}>
                         <h1>Grovic Data</h1>
                         <a
                             rel="noreferrer"
@@ -21,7 +21,7 @@ const Experience: React.FC<ExperienceProps> = (props) => {
                             <h4>grovicdata.com</h4>
                         </a>
                     </div>
-                    <div style={styles.headerRow}>
+                    <div className="header-row" style={styles.headerRow}>
                         <h3>Co-Founder</h3>
                         <b>
                             <p>January 2026 - Present</p>
@@ -57,7 +57,7 @@ const Experience: React.FC<ExperienceProps> = (props) => {
             {/* Valerium */}
             <div style={styles.headerContainer}>
                 <div style={styles.header}>
-                    <div style={styles.headerRow}>
+                    <div className="header-row" style={styles.headerRow}>
                         <h1>Valerium</h1>
                         <a
                             rel="noreferrer"
@@ -67,7 +67,7 @@ const Experience: React.FC<ExperienceProps> = (props) => {
                             <h4>valerium.grovicdata.com</h4>
                         </a>
                     </div>
-                    <div style={styles.headerRow}>
+                    <div className="header-row" style={styles.headerRow}>
                         <h3>Developer & Security</h3>
                         <b>
                             <p>January 2026 - Present</p>
@@ -108,7 +108,7 @@ const Experience: React.FC<ExperienceProps> = (props) => {
             {/* ProntuSMART */}
             <div style={styles.headerContainer}>
                 <div style={styles.header}>
-                    <div style={styles.headerRow}>
+                    <div className="header-row" style={styles.headerRow}>
                         <h1>ProntuSMART</h1>
                         <a
                             rel="noreferrer"
@@ -118,7 +118,7 @@ const Experience: React.FC<ExperienceProps> = (props) => {
                             <h4>prontusmart.grovicdata.com</h4>
                         </a>
                     </div>
-                    <div style={styles.headerRow}>
+                    <div className="header-row" style={styles.headerRow}>
                         <h3>Developer & Security</h3>
                         <b>
                             <p>January 2026 - Present</p>
@@ -158,11 +158,11 @@ const Experience: React.FC<ExperienceProps> = (props) => {
             {/* Homelab & Networking */}
             <div style={styles.headerContainer}>
                 <div style={styles.header}>
-                    <div style={styles.headerRow}>
+                    <div className="header-row" style={styles.headerRow}>
                         <h1>Homelab & Networking</h1>
                         <h4>Linux, Raspberry Pi & Self-Hosting</h4>
                     </div>
-                    <div style={styles.headerRow}>
+                    <div className="header-row" style={styles.headerRow}>
                         <h3>Personal Projects</h3>
                         <b>
                             <p>Ongoing</p>

@@ -77,7 +77,7 @@ const About: React.FC<AboutProps> = (props) => {
                 </p>
                 <br />
                 <br />
-                <div style={{}}>
+                <div className="about-row">
                     <div
                         style={{
                             flex: 1,

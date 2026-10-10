@@ -400,3 +400,184 @@ input:active {
     cursor: pointer;
     color: white;
 }
+/* App projects */
+
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+.app-card {
+    flex-direction: column;
+    padding: 20px;
+}
+
+.project-box {
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 20px;
+}
+
+.app-hero {
+    align-items: center;
+    gap: 24px;
+}
+
+.app-hero-icon {
+    width: 112px;
+    height: 112px;
+    flex-shrink: 0;
+    image-rendering: auto;
+}
+
+.platform-badge {
+    font-family: MSSerif, sans-serif;
+    font-size: 14px;
+    padding: 2px 8px;
+    border: 1px solid black;
+    background: var(--surface-hover);
+}
+
+.download-panel {
+    flex-direction: column;
+    padding: 20px;
+    margin-bottom: 16px;
+    background: #f4f4f4;
+    box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+}
+
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    color: black;
+    text-decoration: none;
+}
+
+.download-panel .download-button {
+    font-size: 20px;
+    padding: 10px 24px;
+}
+
+.command-line {
+    flex: 1;
+    min-width: 0;
+    padding: 6px 10px;
+    background: black;
+    color: #3cff3c;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    user-select: text;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+    text-align: left;
+}
+
+.feature-card {
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px;
+    border: 2px solid black;
+    background: white;
+}
+
+.feature-card p {
+    font-size: 16px;
+}
+
+.captioned-image > a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.app-screenshot {
+    width: 100%;
+    max-width: 760px;
+    padding: 12px;
+    box-sizing: border-box;
+    image-rendering: auto;
+}
+
+.project-pager {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+/* Showcase in a narrow window or on a phone */
+
+.site-page.compact {
+    flex-direction: column;
+}
+
+.site-page.compact .site-page-content {
+    flex: 1;
+    min-height: 0;
+    margin-left: 0;
+    padding: 20px 16px 48px;
+    box-sizing: border-box;
+}
+
+.site-page.compact h1 {
+    font-size: 44px;
+}
+
+.site-page.compact h2 {
+    font-size: 26px;
+}
+
+.site-page.compact h3 {
+    font-size: 20px;
+}
+
+.site-page.compact .text-block {
+    text-align: left;
+}
+
+.site-page.compact .header-row {
+    flex-wrap: wrap;
+    column-gap: 16px;
+}
+
+.site-page.compact .about-row {
+    flex-direction: column;
+}
+
+.site-page.compact .about-row > div {
+    margin-left: 0 !important;
+    margin-top: 24px;
+}
+
+.site-page.compact .home-name {
+    font-size: 52px !important;
+}
+
+.site-page.compact .app-hero {
+    gap: 16px;
+}
+
+.site-page.compact .app-hero-icon {
+    width: 72px;
+    height: 72px;
+}
+
+.site-page.compact .download-panel {
+    padding: 16px;
+}
+
+.site-page.compact .download-panel .download-button {
+    align-self: stretch;
+}

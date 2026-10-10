@@ -1,10 +1,9 @@
-// import { useState, useCallback } from 'react';
+import { getViewportSize } from './useViewport';
 
 export default function useInitialWindowSize({ margin }: { margin?: number }) {
     let m = margin || 0;
 
-    const winW = window.innerWidth;
-    const winH = window.innerHeight;
+    const { width: winW, height: winH } = getViewportSize();
 
     let initWidth = winW - m;
     let initHeight = winH - m;

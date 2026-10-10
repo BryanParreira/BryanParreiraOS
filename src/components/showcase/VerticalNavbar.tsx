@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from '../general';
-import { useLocation, useNavigate } from 'react-router';
+import { useLocation } from 'react-router';
+import { APPS } from './projects/apps';
 
-export interface VerticalNavbarProps {}
+export interface VerticalNavbarProps {
+    // Narrow window: show a header with a menu instead of the side column
+    compact?: boolean;
+}
 
-const VerticalNavbar: React.FC<VerticalNavbarProps> = (props) => {
+const PROJECT_LINKS = [
+    ...APPS.map((app) => app.slug),
+    'Automations',
+    'Valerium',
+    'ProntuSMART',
+];
+
+const VerticalNavbar: React.FC<VerticalNavbarProps> = ({ compact }) => {
     const location = useLocation();
     const [projectsExpanded, setProjectsExpanded] = useState(false);
     const [isHome, setIsHome] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
-    const navigate = useNavigate();
-    const goToContact = () => {
-        navigate('/contact');
-    };
 
     useEffect(() => {
         if (location.pathname.includes('/projects')) {
@@ -25,78 +33,82 @@ const VerticalNavbar: React.FC<VerticalNavbarProps> = (props) => {
         } else {
             setIsHome(false);
         }
+        setMenuOpen(false);
         return () => {};
     }, [location.pathname]);
 
-    return !isHome ? (
+    const links = (
+        <div style={compact ? styles.compactLinks : styles.links}>
+            <Link containerStyle={styles.link} to="" text="HOME" />
+            <Link containerStyle={styles.link} to="about" text="ABOUT" />
+            <Link
+                containerStyle={styles.link}
+                to="experience"
+                text="EXPERIENCE"
+            />
+            <Link
+                containerStyle={Object.assign(
+                    {},
+                    styles.link,
+                    projectsExpanded && styles.expandedLink
+                )}
+                to="projects"
+                text="PROJECTS"
+            />
+            {
+                // if current path contains projects
+                projectsExpanded && (
+                    <div style={styles.insetLinks}>
+                        {PROJECT_LINKS.map((slug) => (
+                            <Link
+                                key={slug}
+                                containerStyle={styles.insetLink}
+                                to={`projects/${slug}`}
+                                text={slug}
+                            />
+                        ))}
+                    </div>
+                )
+            }
+            <Link containerStyle={styles.link} to="contact" text="CONTACT" />
+        </div>
+    );
+
+    if (isHome) return <></>;
+
+    if (compact) {
+        return (
+            <div style={styles.compactNavbar}>
+                <div style={styles.compactHeader}>
+                    <div style={styles.compactTitle}>
+                        <h1 style={styles.compactHeaderText}>
+                            Bryan Parreira
+                        </h1>
+                        <h4>Showcase '26</h4>
+                    </div>
+                    <button
+                        className="site-button"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        aria-expanded={menuOpen}
+                    >
+                        {menuOpen ? 'Close' : 'Menu'}
+                    </button>
+                </div>
+                {menuOpen && links}
+            </div>
+        );
+    }
+
+    return (
         <div style={styles.navbar}>
             <div style={styles.header}>
                 <h1 style={styles.headerText}>Bryan</h1>
                 <h1 style={styles.headerText}>Parreira</h1>
                 <h3 style={styles.headerShowcase}>Showcase '26</h3>
             </div>
-            <div style={styles.links}>
-                <Link containerStyle={styles.link} to="" text="HOME" />
-                <Link containerStyle={styles.link} to="about" text="ABOUT" />
-                <Link
-                    containerStyle={styles.link}
-                    to="experience"
-                    text="EXPERIENCE"
-                />
-                <Link
-                    containerStyle={Object.assign(
-                        {},
-                        styles.link,
-                        projectsExpanded && styles.expandedLink
-                    )}
-                    to="projects"
-                    text="PROJECTS"
-                />
-                {
-                    // if current path contains projects
-                    projectsExpanded && (
-                        <div style={styles.insetLinks}>
-                            <Link
-                                containerStyle={styles.insetLink}
-                                to="projects/Notiz"
-                                text="Notiz"
-                            />
-                            <Link
-                                containerStyle={styles.insetLink}
-                                to="projects/Parla"
-                                text="Parla"
-                            />
-                            <Link
-                                containerStyle={styles.insetLink}
-                                to="projects/Automations"
-                                text="Automations"
-                            />
-                            <Link
-                                containerStyle={styles.insetLink}
-                                to="projects/Valerium"
-                                text="Valerium"
-                            />
-                            <Link
-                                containerStyle={styles.insetLink}
-                                to="projects/ProntuSMART"
-                                text="ProntuSMART"
-                            />
-                        </div>
-                    )
-                }
-                <Link
-                    containerStyle={styles.link}
-                    to="contact"
-                    text="CONTACT"
-                />
-            </div>
+            {links}
             <div style={styles.spacer} />
-            <div style={styles.forHireContainer} onMouseDown={goToContact}>
-                {/* <img src={forHire} style={styles.image} alt="" /> */}
-            </div>
         </div>
-    ) : (
-        <></>
     );
 };
 
@@ -108,11 +120,12 @@ const styles: StyleSheetCSS = {
         padding: 48,
         boxSizing: 'border-box',
         position: 'fixed',
-        overflow: 'hidden',
+        overflowX: 'hidden',
+        overflowY: 'auto',
     },
     header: {
         flexDirection: 'column',
-        marginBottom: 64,
+        marginBottom: 48,
     },
     headerText: {
         fontSize: 38,
@@ -121,12 +134,8 @@ const styles: StyleSheetCSS = {
     headerShowcase: {
         marginTop: 12,
     },
-    logo: {
-        width: '100%',
-        marginBottom: 8,
-    },
     link: {
-        marginBottom: 32,
+        marginBottom: 28,
     },
     expandedLink: {
         marginBottom: 16,
@@ -144,16 +153,33 @@ const styles: StyleSheetCSS = {
         flex: 1,
         justifyContent: 'center',
     },
-    image: {
-        width: '80%',
+    compactNavbar: {
+        flexDirection: 'column',
+        flexShrink: 0,
+        borderBottom: '2px solid black',
+        padding: '12px 16px',
+        maxHeight: '70%',
+        overflowY: 'auto',
+    },
+    compactHeader: {
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 12,
+    },
+    compactTitle: {
+        flexDirection: 'column',
+        minWidth: 0,
+    },
+    compactHeaderText: {
+        fontSize: 30,
+        lineHeight: 1,
+    },
+    compactLinks: {
+        flexDirection: 'column',
+        marginTop: 16,
     },
     spacer: {
         flex: 1,
-    },
-    forHireContainer: {
-        cursor: 'pointer',
-
-        width: '100%',
     },
 };
 

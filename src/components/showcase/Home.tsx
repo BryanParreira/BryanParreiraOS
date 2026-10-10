@@ -1,21 +1,15 @@
 import React from 'react';
 import { Link } from '../general';
 
-import { useNavigate } from 'react-router';
-
 export interface HomeProps {}
 
 const Home: React.FC<HomeProps> = (props) => {
-    const navigate = useNavigate();
-
-    const goToContact = () => {
-        navigate('/contact');
-    };
-
     return (
         <div style={styles.page}>
             <div style={styles.header}>
-                <h1 style={styles.name}>Bryan Parreira</h1>
+                <h1 className="home-name" style={styles.name}>
+                    Bryan Parreira
+                </h1>
                 <h2>Cybersecurity Student & Developer</h2>
             </div>
             <div style={styles.buttons}>
@@ -36,9 +30,6 @@ const Home: React.FC<HomeProps> = (props) => {
                     text="CONTACT"
                 />
             </div>
-            <div style={styles.forHireContainer} onMouseDown={goToContact}>
-                {/* <img src={forhire} alt="" /> */}
-            </div>
         </div>
     );
 };
@@ -56,6 +47,7 @@ const styles: StyleSheetCSS = {
     },
     header: {
         textAlign: 'center',
+        padding: '0 16px',
         marginBottom: 64,
         marginTop: 64,
 
@@ -64,24 +56,11 @@ const styles: StyleSheetCSS = {
         justifyContent: 'center',
     },
     buttons: {
-        justifyContent: 'space-between',
-    },
-    image: {
-        width: 800,
+        justifyContent: 'center',
+        flexWrap: 'wrap',
     },
     link: {
         padding: 16,
-    },
-    nowHiring: {
-        backgroundColor: 'red',
-        padding: 16,
-    },
-    forHireContainer: {
-        marginTop: 64,
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        cursor: 'pointer',
     },
     name: {
         fontSize: 72,
