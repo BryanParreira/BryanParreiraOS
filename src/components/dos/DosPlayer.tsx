@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { DosPlayer as Instance, DosPlayerFactoryType } from 'js-dos';
+import type { DosPlayer as Instance, DosPlayerFactoryType } from 'js-dos';
 
 declare const Dos: DosPlayerFactoryType;
 
