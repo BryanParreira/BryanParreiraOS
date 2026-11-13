@@ -32,6 +32,7 @@ const fitFrame = (
 };
 
 export interface WindowProps {
+    children?: React.ReactNode;
     closeWindow: () => void;
     minimizeWindow: () => void;
     onInteract: () => void;
