@@ -51,19 +51,19 @@ const ValeriumProject: React.FC<ValeriumProjectProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <img src={valerium1} alt="Valerium Sign In" style={styles.image} />
+                    <img src={valerium1} alt="Valerium landing page" style={styles.image} />
                     <div style={styles.caption}>
                         <sub>
-                            <b>Figure 1:</b> Valerium's sign-in screen.
+                            <b>Figure 1:</b> Valerium's landing page.
                         </sub>
                     </div>
                 </div>
                 <div className="captioned-image">
-                    <img src={valerium2} alt="Valerium Scheduling" style={styles.image} />
+                    <img src={valerium2} alt="Valerium overview dashboard" style={styles.image} />
                     <div style={styles.caption}>
                         <sub>
-                            <b>Figure 2:</b> Weekly scheduling view for
-                            tracking jobs and appointments.
+                            <b>Figure 2:</b> The overview dashboard, with cash flow
+                            and what needs attention next.
                         </sub>
                     </div>
                 </div>
@@ -105,11 +105,11 @@ const ValeriumProject: React.FC<ValeriumProjectProps> = (props) => {
                 </p>
                 <br />
                 <div className="captioned-image">
-                    <img src={valerium3} alt="Valerium Analytics" style={styles.image} />
+                    <img src={valerium3} alt="Valerium transactions" style={styles.image} />
                     <div style={styles.caption}>
                         <sub>
-                            <b>Figure 3:</b> Revenue and burn-rate analytics
-                            dashboard.
+                            <b>Figure 3:</b> Imported transactions, categorized
+                            and ready to review.
                         </sub>
                     </div>
                 </div>

@@ -2,11 +2,9 @@ import parlaIcon from '../../../assets/pictures/projects/icons/parla.png';
 import notizIcon from '../../../assets/pictures/projects/icons/notiz.png';
 import runeIcon from '../../../assets/pictures/projects/icons/rune.png';
 import orbitIcon from '../../../assets/pictures/projects/icons/orbit.png';
+import bastionIcon from '../../../assets/pictures/projects/icons/bastion.png';
 import parla1 from '../../../assets/pictures/projects/software/parla1.png';
 import parla2 from '../../../assets/pictures/projects/software/parla2.png';
-import notiz1 from '../../../assets/pictures/projects/software/notiz1.png';
-import notiz2 from '../../../assets/pictures/projects/software/notiz2.png';
-import notiz3 from '../../../assets/pictures/projects/software/notiz3.png';
 import rune1 from '../../../assets/pictures/projects/software/rune1.png';
 import rune2 from '../../../assets/pictures/projects/software/rune2.png';
 import rune3 from '../../../assets/pictures/projects/software/rune3.png';
@@ -14,6 +12,10 @@ import orbit1 from '../../../assets/pictures/projects/software/orbit1.png';
 import orbit2 from '../../../assets/pictures/projects/software/orbit2.png';
 import orbit3 from '../../../assets/pictures/projects/software/orbit3.png';
 import orbit4 from '../../../assets/pictures/projects/software/orbit4.png';
+import bastion1 from '../../../assets/pictures/projects/software/bastion-monitor-light.png';
+import bastion2 from '../../../assets/pictures/projects/software/bastion-rules-light.png';
+import bastion3 from '../../../assets/pictures/projects/software/bastion-connections-light.png';
+import bastion4 from '../../../assets/pictures/projects/software/bastion-monitor-dark.png';
 
 export type Platform = 'mac' | 'windows' | 'linux';
 
@@ -29,8 +31,9 @@ export interface AppProject {
     name: string;
     tagline: string;
     icon: string;
-    // GitHub owner/name; downloads come from its latest release
-    repo: string;
+    // GitHub owner/name; downloads come from its latest release. Left out
+    // for apps with no public release yet.
+    repo?: string;
     platforms: Platform[];
     // Platforms whose builds are still in preview
     previewPlatforms?: Platform[];
@@ -135,41 +138,46 @@ export const APPS: AppProject[] = [
     {
         slug: 'Notiz',
         name: 'Notiz',
-        tagline: 'Local-First AI Meeting Assistant',
+        tagline: 'Notes, Calendar & Inbox, All Local',
         icon: notizIcon,
         repo: 'BryanParreira/Notiz',
         platforms: ['mac'],
         requirements: 'macOS 14.2+ on Apple silicon.',
         price: 'Free & open source',
-        intro: "Your meetings. Your machine. Your notes. Notiz is a local-first AI meeting assistant for macOS that listens, transcribes, and writes up your meetings on your own hardware, into plain Markdown files you own. It's the new version of my earlier project, Velo.",
+        intro: 'Your notes, your calendar and your inbox in one quiet Mac app, with nothing leaving your machine. Notiz keeps every note as a plain Markdown file in a folder you choose, with no account, no AI and no server.',
         overview: [
-            'Notiz is German for "note": a short record of what happened, written down so it\'s worth keeping.',
-            "No bot joins your call: Notiz captures the audio your Mac is already playing and recording, so it works with Zoom, Meet, Teams, or two people talking across a table, with nothing to invite and nobody else in the room.",
+            'Notiz is German for "note": a short record of what happened, written down so it\'s worth keeping. It has a warm, paper-like look, a compact sidebar and a calm editor.',
+            'Notes sit next to the calendar and the mail that give them context. Connect your calendar and email the same simple way, with a provider preset and your credentials or a private link, or skip both and just write.',
         ],
         features: [
             {
-                title: 'Transcription Your Way',
-                body: 'Run fully on-device, or plug in a cloud transcriber like Deepgram, AssemblyAI, Soniox, ElevenLabs, OpenAI, local Ollama, or any custom endpoint.',
-            },
-            {
-                title: 'Bring-Your-Own Model',
-                body: 'Write notes with OpenAI, Anthropic, Google, Mistral, OpenRouter or Azure, or stay fully offline with Ollama, LM Studio, or a local GGUF (Llama 3.2, Gemma 3, Qwen 2.5) downloaded from inside the app.',
-            },
-            {
                 title: 'Everything Is a File',
-                body: 'Every session is a .md file in a folder you choose. Grep it, sync it with iCloud or git. No proprietary database, no export button to hunt for.',
+                body: 'Every note is a .md file in a folder you choose. Grep it, sync it with iCloud or git. No proprietary database, no export button to hunt for.',
             },
             {
-                title: 'Stays Out of the Way',
-                body: 'Lives in the menu bar, follows your calendar, and can pull task context from GitHub while you work.',
+                title: 'A Calm Editor',
+                body: 'A rich-text editor with real checkboxes, 21 ready-made templates and instant search across all your notes.',
             },
             {
-                title: 'Privacy by Design',
-                body: 'No account, no analytics, no crash reporting. AI requests go straight from your machine to the provider you configured, never proxied through a server of mine.',
+                title: 'Calendar',
+                body: 'Reads your Apple calendars, private iCal links, or Google and Microsoft calendars you connect directly. Optional, and never needed to open the app.',
+            },
+            {
+                title: 'Inbox',
+                body: 'Read-only mail over IMAP, shown as real HTML with images, like Gmail. Your app password stays in the macOS Keychain.',
+            },
+            {
+                title: 'Menu Bar Panel',
+                body: 'Left-click the menu bar icon for a quick panel, right-click for the menu. Notiz stays within reach without getting in the way.',
+            },
+            {
+                title: 'Local by Design',
+                body: 'No Notiz server, no account, no analytics, no crash reporting and no AI. The app can only talk to your own mail server or calendar link.',
             },
         ],
         architecture: [
-            'Notiz is a Tauri app with a Rust core and a React front end, organized as a pnpm + Turborepo monorepo. Audio capture, transcription, speaker diarization and the local model runtime are Rust crates, with platform glue living in Tauri plugins so the native pipeline and the UI stay cleanly separated.',
+            'Notiz is a Tauri app with a Rust core and a React front end, organized as a pnpm + Turborepo monorepo. Mail, calendar and note storage are Rust crates, with platform glue living in Tauri plugins.',
+            'The app\'s content security policy only allows connections to the machine itself, so it cannot phone home even by accident. Email is read-only, and calendar access goes through Apple EventKit or iCal links you provide.',
         ],
         stack: [
             { label: 'Core', value: 'Rust, Tauri' },
@@ -180,30 +188,11 @@ export const APPS: AppProject[] = [
             { label: 'Monorepo Tooling', value: 'pnpm workspaces, Turborepo' },
             { label: 'License', value: 'MIT (a fork of Hyprnote by Fastrepl)' },
         ],
-        screenshots: [
-            {
-                src: notiz1,
-                alt: 'Notiz Quick Actions',
-                caption:
-                    'The quick-action menu for starting a new note or recording.',
-            },
-            {
-                src: notiz2,
-                alt: 'Notiz Settings',
-                caption:
-                    'Settings panel covering app behavior, transcription, and meeting automation.',
-            },
-            {
-                src: notiz3,
-                alt: 'Notiz AI Chat',
-                caption:
-                    'The AI chat interface answering questions directly inside a note.',
-            },
-        ],
+        screenshots: [],
         installSteps: [
             'Download the .dmg above.',
             'Open it and drag Notiz into Applications.',
-            'Launch Notiz, pick a folder for your notes, and choose a transcription and note-writing model.',
+            'Launch Notiz, pick a folder for your notes, and optionally connect a calendar and your email.',
         ],
     },
     {
@@ -369,6 +358,92 @@ export const APPS: AppProject[] = [
         ],
         notes: [
             'Orbit is an early release. Linux guests, suspend and resume, snapshots and the QEMU engine are tested end to end; macOS and Windows 11 guests are implemented but still being tested.',
+        ],
+    },
+    {
+        slug: 'Bastion',
+        name: 'Bastion',
+        tagline: 'See What Your Mac Shares',
+        icon: bastionIcon,
+        repo: 'BryanParreira/bastion',
+        platforms: ['mac'],
+        requirements:
+            'macOS 15+. Signed and notarized by Apple. Approve the network extension once to turn blocking on.',
+        price: 'Free',
+        intro: 'A network firewall and privacy guard for macOS. See which app talks to whom, allow or deny each connection, and get told the moment anything turns on your camera or microphone.',
+        overview: [
+            "Every app on your Mac decides for itself where your data goes, and macOS doesn't show you. Bastion shows live traffic per app and per domain, lets you allow or deny each connection with one click, and keeps a history you can search.",
+            'There is no account and no cloud. Rules, history and logs stay on your Mac, and the only network calls are ones you start yourself, such as downloading a blocklist.',
+        ],
+        features: [
+            {
+                title: 'Network Monitor',
+                body: 'Live sent and received traffic per app and domain, with a timeline from 5 minutes to a week. Click an app for its code signature, team and connections.',
+            },
+            {
+                title: 'Rules & Blocklists',
+                body: 'Allow or deny per app, domain or port, from once to forever. Schedules, Wi-Fi profiles, ad and tracker blocklists, and import from Little Snitch.',
+            },
+            {
+                title: 'Privacy Report',
+                body: 'Every app gets an A to F grade from its last 7 days of traffic: ad and analytics services, signing and upload volume.',
+            },
+            {
+                title: 'Camera & Mic Guard',
+                body: 'An overlay and notification the moment a camera or microphone turns on, with a log of which app was in front and what was uploaded.',
+            },
+            {
+                title: 'Autopilot',
+                body: 'Turns your history into a starter rule set you review line by line, and can hold programs that have never connected before until you allow them.',
+            },
+            {
+                title: 'Security Audit',
+                body: 'A read-only scan of about 25 settings, from FileVault to launch items, scored 0 to 100 with plain-language fix steps. Bastion never changes your system.',
+            },
+        ],
+        architecture: [
+            'Bastion has two parts. A SwiftUI app owns the rules, history and interface. A macOS Network Extension (a content filter, the same mechanism commercial firewalls use) evaluates your rules inside the system and reports per-flow byte counts. They talk over XPC, with each side checking the other\'s code signature.',
+            'Until you approve the extension, Bastion runs in observe mode and records without blocking. Camera and microphone state comes straight from CoreMediaIO and CoreAudio.',
+        ],
+        stack: [
+            { label: 'Language', value: 'Swift, SwiftUI' },
+            {
+                label: 'Filtering',
+                value: 'Network Extension (NEFilterDataProvider), XPC',
+            },
+            { label: 'Devices', value: 'CoreMediaIO, CoreAudio' },
+            { label: 'Signing', value: 'Developer ID, hardened runtime, notarized' },
+        ],
+        screenshots: [
+            {
+                src: bastion1,
+                alt: 'Bastion Network Monitor',
+                caption: 'The Network Monitor: live traffic per app and domain.',
+            },
+            {
+                src: bastion2,
+                alt: 'Bastion Rules',
+                caption: 'Rules for allowing or denying apps, domains and ports.',
+            },
+            {
+                src: bastion3,
+                alt: 'Bastion Connections',
+                caption: 'Every connection, with where it went.',
+            },
+            {
+                src: bastion4,
+                alt: 'Bastion Network Monitor in dark mode',
+                caption: 'The Network Monitor in dark appearance.',
+            },
+        ],
+        installSteps: [
+            'Download the .dmg and drag Bastion into Applications. It must live there for the network filter to load.',
+            'Open it and follow the guided setup.',
+            'To turn blocking on, switch Bastion on under System Settings, General, Login Items & Extensions, Network Extensions, then click Allow.',
+        ],
+        notes: [
+            'Bastion is a pre-release. It monitors outgoing connections only; incoming-connection monitoring is not built yet.',
+            'If you use Little Snitch, remove it first. Two content filters at once can conflict.',
         ],
     },
 ];

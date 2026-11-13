@@ -17,11 +17,19 @@ const visitorPlatform = detectPlatform();
 const DownloadPanel: React.FC<DownloadPanelProps> = ({ app }) => {
     const release = useLatestRelease(app.repo);
     const latestUrl = `https://github.com/${app.repo}/releases/latest`;
+    const hasRelease = !!app.repo;
 
     const isPreview = (asset: ReleaseAsset) =>
         !!app.previewPlatforms?.includes(asset.platform);
 
     const renderAssets = () => {
+        if (!hasRelease) {
+            return (
+                <p style={styles.notice}>
+                    {app.name} isn't publicly downloadable yet.
+                </p>
+            );
+        }
         if (release.status === 'loading') {
             return (
                 <div style={styles.column}>
@@ -73,6 +81,7 @@ const DownloadPanel: React.FC<DownloadPanelProps> = ({ app }) => {
                 </a>
                 <p style={styles.assetDetail}>
                     {recommended.detail} · {formatSize(recommended.size)}
+                    {recommended.version && ` · v${recommended.version}`}
                 </p>
                 {others.length > 0 && (
                     <div style={styles.otherDownloads}>
@@ -88,6 +97,7 @@ const DownloadPanel: React.FC<DownloadPanelProps> = ({ app }) => {
                                 <span style={styles.muted}>
                                     {' '}
                                     · {asset.detail} · {formatSize(asset.size)}
+                                    {asset.version && ` · v${asset.version}`}
                                 </span>
                             </p>
                         ))}
@@ -107,11 +117,11 @@ const DownloadPanel: React.FC<DownloadPanelProps> = ({ app }) => {
             <div style={styles.header}>
                 <img src={app.icon} alt="" style={styles.icon} />
                 <div style={styles.headerText}>
-                    <h3>Download {app.name}</h3>
+                    <h3>{hasRelease ? `Download ${app.name}` : app.name}</h3>
                     <p style={styles.muted}>
                         {release.status === 'ready'
                             ? `Version ${release.release.version} · ${formatDate(
-                                  release.release.publishedAt
+                                  release.release.publishedAt,
                               )} · ${app.price}`
                             : app.price}
                     </p>
@@ -119,8 +129,8 @@ const DownloadPanel: React.FC<DownloadPanelProps> = ({ app }) => {
             </div>
             {visitorPlatform === 'mobile' && (
                 <p style={styles.notice}>
-                    {app.name} is a desktop app. Open this page on your
-                    computer to install it.
+                    {app.name} is a desktop app. Open this page on your computer
+                    to install it.
                 </p>
             )}
             {visitorPlatform !== 'mobile' &&
@@ -137,35 +147,37 @@ const DownloadPanel: React.FC<DownloadPanelProps> = ({ app }) => {
             <p style={styles.requirements}>
                 <b>Requirements:</b> {app.requirements}
             </p>
-            <p style={styles.links}>
-                {release.status === 'ready' && (
-                    <>
-                        <a
-                            href={release.release.url}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            Release notes
-                        </a>
-                        {' · '}
-                    </>
-                )}
-                <a
-                    href={`https://github.com/${app.repo}/releases`}
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    All releases
-                </a>
-                {' · '}
-                <a
-                    href={`https://github.com/${app.repo}`}
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    Source on GitHub
-                </a>
-            </p>
+            {hasRelease && (
+                <p style={styles.links}>
+                    {release.status === 'ready' && (
+                        <>
+                            <a
+                                href={release.release.url}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Release notes
+                            </a>
+                            {' · '}
+                        </>
+                    )}
+                    <a
+                        href={`https://github.com/${app.repo}/releases`}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        All releases
+                    </a>
+                    {' · '}
+                    <a
+                        href={`https://github.com/${app.repo}`}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Source on GitHub
+                    </a>
+                </p>
+            )}
         </div>
     );
 };

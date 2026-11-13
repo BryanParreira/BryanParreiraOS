@@ -6,7 +6,6 @@ import Window from '../os/Window';
 import Experience from '../showcase/Experience';
 import Projects from '../showcase/Projects';
 import Contact from '../showcase/Contact';
-import Automations from '../showcase/projects/Automations';
 import AppProjectPage from '../showcase/projects/AppProjectPage';
 import { APPS } from '../showcase/projects/apps';
 import Valerium from '../showcase/projects/Valerium';
@@ -65,10 +64,6 @@ const ShowcaseExplorer: React.FC<ShowcaseExplorerProps> = (props) => {
                         <Route path="/experience" element={<Experience />} />
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/contact" element={<Contact />} />
-                        <Route
-                            path="/projects/Automations"
-                            element={<Automations />}
-                        />
                         {APPS.map((app) => (
                             <Route
                                 key={app.slug}

@@ -94,8 +94,7 @@ const About: React.FC<AboutProps> = (props) => {
                             homelab is basically a small pile of Linux boxes
                             and Raspberry Pis that I've talked myself into
                             "needing," and I'm constantly rewiring them with
-                            new{' '}
-                            <Link to="/projects/Automations">automations</Link>.
+                            new automations.
                             I love distro-hopping and hardware-hopping just to
                             see what breaks and what a new setup can teach me,
                             whether it's spinning up the latest release of

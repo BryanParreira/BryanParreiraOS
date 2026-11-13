@@ -77,7 +77,7 @@ const WORK: Role[] = [
         summary:
             'Designing, building and shipping my own free, privacy-first desktop apps. Everything runs on the user\'s own machine, with no accounts and no tracking.',
         highlights: [
-            'Shipped four apps: Parla (dictation), Notiz (meeting notes), Rune (terminal) and Orbit (virtual machines).',
+            'Built five Mac apps: Parla (dictation), Notiz (notes, calendar and inbox), Rune (terminal), Orbit (virtual machines) and Bastion (network firewall).',
             'Built native apps in Swift (AppKit, SwiftUI) and cross-platform apps with Rust and Tauri, running speech and language models on-device.',
             'Handle the full release pipeline: code signing, Apple notarization, installers, and signed automatic updates.',
         ],

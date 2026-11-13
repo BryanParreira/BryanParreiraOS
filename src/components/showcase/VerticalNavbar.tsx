@@ -10,7 +10,6 @@ export interface VerticalNavbarProps {
 
 const PROJECT_LINKS = [
     ...APPS.map((app) => app.slug),
-    'Automations',
     'Valerium',
     'ProntuSMART',
 ];

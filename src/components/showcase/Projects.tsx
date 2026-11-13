@@ -20,7 +20,9 @@ const AppCard: React.FC<{ app: AppProject }> = ({ app }) => {
     const openDetails = () => navigate(`/projects/${app.slug}`);
 
     // Straight to the installer for the visitor's system when there is one
-    let downloadUrl = `https://github.com/${app.repo}/releases/latest`;
+    let downloadUrl = app.repo
+        ? `https://github.com/${app.repo}/releases/latest`
+        : undefined;
     let downloadLabel = 'Download';
     if (release.status === 'ready') {
         const asset = release.release.assets.find(
@@ -36,7 +38,14 @@ const AppCard: React.FC<{ app: AppProject }> = ({ app }) => {
         <div
             className="big-button-container app-card"
             onClick={openDetails}
+            onKeyDown={(e) => {
+                if (e.target === e.currentTarget && e.key === 'Enter') {
+                    openDetails();
+                }
+            }}
             role="link"
+            tabIndex={0}
+            aria-label={`${app.name}: ${app.tagline}`}
         >
             <div style={styles.cardHeader}>
                 <img src={app.icon} alt="" style={styles.appIcon} />
@@ -55,14 +64,20 @@ const AppCard: React.FC<{ app: AppProject }> = ({ app }) => {
             </p>
             <div style={styles.spacer} />
             <div style={styles.cardButtons}>
-                <a
-                    className="site-button download-button"
-                    href={downloadUrl}
-                    rel="noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                >
-                    {downloadLabel}
-                </a>
+                {downloadUrl ? (
+                    <a
+                        className="site-button download-button"
+                        href={downloadUrl}
+                        rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {downloadLabel}
+                    </a>
+                ) : (
+                    <span className="site-button" aria-disabled="true">
+                        Coming soon
+                    </span>
+                )}
                 <button
                     className="site-button"
                     onClick={(e) => {
@@ -145,14 +160,13 @@ const Projects: React.FC<ProjectsProps> = (props) => {
             <h3>& Hobbies</h3>
             <br />
             <p>
-                Here's what I've been building: my own desktop apps, the
-                platforms I help build at Grovic Data, and automation work.
+                Here's what I've been building: my own desktop apps and the
+                platforms I help build at Grovic Data.
                 Click any project to see screenshots and how it works.
             </p>
             <h4 className="section-label">Apps</h4>
             <p style={styles.sectionIntro}>
-                Free to download. Each one runs entirely on your own machine,
-                no account needed.
+                Each one runs entirely on your own machine, no account needed.
             </p>
             <div className="app-grid">
                 {APPS.map((app) => (
@@ -180,19 +194,6 @@ const Projects: React.FC<ProjectsProps> = (props) => {
                     route="ProntuSMART"
                     image={prontusmartImage}
                     site="https://prontusmart.grovicdata.com"
-                />
-            </div>
-            <h4 className="section-label">Automation</h4>
-            <p style={styles.sectionIntro}>
-                Workflows that take repetitive business work off people's
-                plates.
-            </p>
-            <div className="app-grid">
-                <WorkCard
-                    title="Automations"
-                    meta="n8n workflows"
-                    tagline="Business Process Automation"
-                    route="Automations"
                 />
             </div>
         </div>

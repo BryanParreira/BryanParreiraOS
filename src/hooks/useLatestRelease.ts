@@ -8,6 +8,8 @@ export interface ReleaseAsset {
     platform: Platform;
     label: string;
     detail: string;
+    // Set when the file comes from an older release than the headline one
+    version?: string;
 }
 
 export interface Release {
@@ -54,10 +56,16 @@ const classifyAsset = (name: string) => {
         };
     }
     if (lower.endsWith('.appimage')) {
-        return { platform: 'linux' as Platform, detail: 'AppImage, any distro' };
+        return {
+            platform: 'linux' as Platform,
+            detail: 'AppImage, any distro',
+        };
     }
     if (lower.endsWith('.deb')) {
-        return { platform: 'linux' as Platform, detail: '.deb, Ubuntu & Debian' };
+        return {
+            platform: 'linux' as Platform,
+            detail: '.deb, Ubuntu & Debian',
+        };
     }
     if (lower.endsWith('.rpm')) {
         return { platform: 'linux' as Platform, detail: '.rpm, Fedora & RHEL' };
@@ -92,7 +100,7 @@ const parseRelease = (raw: any): Release | null => {
 // Kept across visits so returning visitors don't spend GitHub's 60
 // requests an hour; an expired copy still beats nothing if GitHub says no
 const readCache = (
-    repo: string
+    repo: string,
 ): { release: Release; fresh: boolean } | null => {
     try {
         const cached = localStorage.getItem(`release:${repo}`);
@@ -108,7 +116,7 @@ const writeCache = (repo: string, release: Release) => {
     try {
         localStorage.setItem(
             `release:${repo}`,
-            JSON.stringify({ savedAt: Date.now(), release })
+            JSON.stringify({ savedAt: Date.now(), release }),
         );
     } catch (e) {
         // Storage can be full or blocked; the next visit just refetches
@@ -121,22 +129,37 @@ const fetchLatestRelease = (repo: string): Promise<Release | null> => {
     if (!pending[repo]) {
         pending[repo] = fetch(
             `https://api.github.com/repos/${repo}/releases?per_page=10`,
-            { headers: { Accept: 'application/vnd.github+json' } }
+            { headers: { Accept: 'application/vnd.github+json' } },
         )
             .then((res) => {
                 if (!res.ok) throw new Error(`GitHub ${res.status}`);
                 return res.json();
             })
             .then((releases: any[]) => {
+                let latest: Release | null = null;
                 for (const raw of releases) {
                     if (raw.draft || raw.prerelease) continue;
                     const release = parseRelease(raw);
-                    if (release) {
-                        writeCache(repo, release);
-                        return release;
+                    if (!release) continue;
+                    if (!latest) {
+                        latest = release;
+                        continue;
                     }
+                    // A newer release can ship fewer platforms (Parla's
+                    // 1.8.1 is Mac only), so fill gaps from older ones
+                    const have = new Set(
+                        latest.assets.map((a) => `${a.platform}`),
+                    );
+                    release.assets.forEach((asset) => {
+                        if (have.has(asset.platform)) return;
+                        latest!.assets.push({
+                            ...asset,
+                            version: release.version,
+                        });
+                    });
                 }
-                return null;
+                if (latest) writeCache(repo, latest);
+                return latest;
             })
             .catch(() => {
                 // Let a later mount try again
@@ -147,8 +170,9 @@ const fetchLatestRelease = (repo: string): Promise<Release | null> => {
     return pending[repo];
 };
 
-export default function useLatestRelease(repo: string): ReleaseState {
+export default function useLatestRelease(repo?: string): ReleaseState {
     const [state, setState] = useState<ReleaseState>(() => {
+        if (!repo) return { status: 'error' };
         const cached = readCache(repo);
         return cached
             ? { status: 'ready', release: cached.release }
@@ -156,12 +180,12 @@ export default function useLatestRelease(repo: string): ReleaseState {
     });
 
     useEffect(() => {
-        if (readCache(repo)?.fresh) return;
+        if (!repo || readCache(repo)?.fresh) return;
         let isMounted = true;
         fetchLatestRelease(repo).then((release) => {
             if (!isMounted) return;
             setState(
-                release ? { status: 'ready', release } : { status: 'error' }
+                release ? { status: 'ready', release } : { status: 'error' },
             );
         });
         return () => {
